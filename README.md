@@ -1,5 +1,7 @@
-NOMBRE PROVISIONAL
-The Third Law productions 
+﻿NOMBRE PROVISIONAL
+The Third Law productions
+
+Trello del grupo: https://trello.com/b/gA3ICoHm/juegos-en-red
 
 INFORMACIÓN GENERAL
 Título: xxxxx
