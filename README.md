@@ -31,18 +31,34 @@ Controles: como ya mencionamos antes, los controles principales se basan en las 
 Puntuación: en el juego existe un sistema de niveles y además uno monetario. Al ganar (o perder) la partida obtienes beneficios que te permiten subir de nivel, conseguir apariencias distintas (siempre buscando que sea más sencillo esconderse, camuflarse) y comprar trampas para despistar al rival.
 Estas recompensas dependen del nivel del rival (también pueden ser penalizaciones) y de un marcador de la distancia recorrida.
 
-ESTADOS DEL JUEGO
--Menú principal: con opciones de iniciar partida y 
+ ESTADOS DEL JUEGO
+-Menú principal: con opciones de iniciar partida, acceder a la tienda, a los créditos y a la configuración de sonido. 
+-Tiempo de juego: con opciones de avanzar, esconderse, colocar trampas o abandonar la partida, lo que nos llevará al menú principal.
 
 INTEFACES
+La línea del juego consiste en un estilo sencillo y geométrico en tonos oscuros.
+Interface visualmente sencilla y accesible, porque el videojuego no está enfocado a una sección de usuarios concreta.
 
 NIVELES
-Dentro de lo que es el tiempo de juego, el escenario y la música se mantienen monótonos, conforme avanza el jugador, a una cierta distancia, van cambiando, pero como mera experiencia visual/auditiva, ya que lo realmente importante para la puntuación final se basa en la distancia recorrida y el nivel del rival.
+Dentro de lo que es el tiempo de juego, el escenario y la música se mantienen monótonos, conforme avanza el jugador, a una cierta distancia, van cambiando, pero como mera experiencia visual/auditiva, ya que lo realmente importante para la puntuación final se basa en la distancia recorrida y el nivel del rival. Además también aumenta la velocidad del juego.
 De manera externa, el nivel individual de cada jugador depende de la puntuación de cada partida. Conforme se avanza de nivel podemos acceder a camuflajes y trampas más avanzados.
 
-PROGRESO DEL JUEGO
 
 PERSONAJE
-Propio de cada jugador, tiene una apariencia inicial que cada uno va personalizando según sus posibilidades 
+Propio de cada jugador, tiene una apariencia inicial básica que cada uno va personalizando según sus posibilidades.
 
 ÍTEMS
+-Trampas: una especie de destellos para confundir al perseguidor y además bajar su puntuación.
+-Apariencias: intercambiables y accesibles a cambio de monedas, permiten al jugador personalizar su personaje y hacerlo más funcional, sirviéndole de camuflaje.
+
+
+
+
+MIEMBROS DEL EQUIPO
+-Jorge Diego Arteaga
+-Alberto Hernández González 
+-Sandra Morcuende Rodríguez 
+
+
+
+
