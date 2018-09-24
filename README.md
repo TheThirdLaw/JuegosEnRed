@@ -11,6 +11,8 @@ Versión: 1.0
 Categoría: juego de plataformas, competitivo
 Público: todos los públicos
 
+![Start Menu] (https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/images/Start%20Menu.jpg)
+
 El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica. El objetivo es que el jugador que va en primera posición consiga esconderse para colocarse el segundo, donde su misión será capturar a su compañero, el que realmente supondrá su rival.
 
 HISTORIAL DE VERSIONES
