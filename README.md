@@ -1,4 +1,4 @@
-# **NO-NAME**
+# **NO-NAME GAME**
  
 The Third Law productions
 
@@ -8,7 +8,7 @@ Trello del grupo: https://trello.com/b/gA3ICoHm/juegos-en-red
 
 ## **INFORMACIÓN GENERAL** 
 
-Título: No-Name
+Título: No-Name Game
 
 Estudio: The Third Law 
 
