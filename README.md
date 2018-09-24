@@ -11,6 +11,9 @@ Versión: 1.0
 Categoría: juego de plataformas, competitivo
 Público: todos los públicos
 
+![Start Menu](JuegosEnRed/images/Start Menu.jpg)
+    
+
 El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para colocarse el segundo, donde su misión será capturar a su compañero, el que realmente supondrá su rival. El juego cuenta con un sistema de trampas (visuales y que además, restan puntuación) para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel.
 
 HISTORIAL DE VERSIONES
