@@ -46,7 +46,7 @@ El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugador
 
 <br><br>
 
-## **HISTORIAL DE VERSIONES*
+## **HISTORIAL DE VERSIONES**
 
 Creación del juego, versión alpha (1.0) - INICIO: 19/09/2018; FIN:
 
