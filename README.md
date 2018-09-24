@@ -11,15 +11,13 @@ Versión: 1.0
 Categoría: juego de plataformas, competitivo
 Público: todos los públicos
 
-![Start Menu] (https://github.com/TheThirdLaw/JuegosEnRed/Dev/images/Start%20Menu.jpg)
-
-El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica. El objetivo es que el jugador que va en primera posición consiga esconderse para colocarse el segundo, donde su misión será capturar a su compañero, el que realmente supondrá su rival.
+El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para colocarse el segundo, donde su misión será capturar a su compañero, el que realmente supondrá su rival. El juego cuenta con un sistema de trampas (visuales y que además, restan puntuación) para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel.
 
 HISTORIAL DE VERSIONES
 Creación del juego, versión alpha (1.0) - INICIO: 19/09/2018; FIN:
 
 VISIÓN GENERAL DEL JUEGO
-Este proyecto está enfocado hacia un producto sencillo, pero entretenido, en el cual la competitividad entre dos jugadores aleatorios no se basará simplemente en huir, sino que también se necesitará estrategia para esconderse de tal forma que el compañero no consiga percibirle.
+Este proyecto está enfocado hacia un producto sencillo, pero entretenido, en el cual la competitividad entre dos jugadores aleatorios no se basará simplemente en huir, sino que también se necesitará estrategia para esconderse de tal forma que el compañero no consiga percibirle para, por ejemplo, conseguir alcanzarlo en el momento justo en el que lo adelante.
 
 MECÁNICA DEL JUEGO
 Al inicio del juego, se determina de manera aleatoria cuál de los dos jugadores iniciará la marcha. 
@@ -29,8 +27,8 @@ Controles: como ya mencionamos antes, los controles principales se basan en las 
 -Flechas derecha e izquierda: avanzar/retroceder
 -Flechas arriba y abajo: esconderse
 -Tecla “P”: menú de pausa (reanudar, menú principal, salir)
--Tecla “I”: colocar destellos
-Puntuación: en el juego existe un sistema de niveles y además uno monetario. Al ganar (o perder) la partida obtienes beneficios que te permiten subir de nivel, conseguir apariencias distintas (siempre buscando que sea más sencillo esconderse, camuflarse) y comprar trampas para despistar al rival.
+-Tecla “I”: colocar destellos, manteniéndola presionada y usando las flechas se puede determinar qué tipo de objeto queremos usar.
+Puntuación: en el juego existe un sistema de niveles y además uno monetario. Al ganar (o perder) la partida obtienes beneficios que te permiten subir de nivel, conseguir apariencias distintas (siempre buscando que sea más sencillo esconderse, camuflarse) y comprar trampas para despistar y debilitar al rival.
 Estas recompensas dependen del nivel del rival (también pueden ser penalizaciones) y de un marcador de la distancia recorrida.
 
  ESTADOS DEL JUEGO
@@ -38,7 +36,7 @@ Estas recompensas dependen del nivel del rival (también pueden ser penalizacion
 -Tiempo de juego: con opciones de avanzar, esconderse, colocar trampas o abandonar la partida, lo que nos llevará al menú principal.
 
 INTEFACES
-La línea del juego consiste en un estilo sencillo y geométrico en tonos oscuros.
+La línea del juego consiste en un estilo sencillo y geométrico-abstracto en tonos oscuros.
 Interface visualmente sencilla y accesible, porque el videojuego no está enfocado a una sección de usuarios concreta.
 
 NIVELES
@@ -47,7 +45,7 @@ De manera externa, el nivel individual de cada jugador depende de la puntuación
 
 
 PERSONAJE
-Propio de cada jugador, tiene una apariencia inicial básica que cada uno va personalizando según sus posibilidades.
+Propio de cada jugador, tiene una apariencia inicial básica que cada uno irá personalizando según sus posibilidades y sus preferencias.
 
 ÍTEMS
 -Trampas: una especie de destellos para confundir al perseguidor y además bajar su puntuación.
@@ -57,10 +55,18 @@ Propio de cada jugador, tiene una apariencia inicial básica que cada uno va per
 
 
 MIEMBROS DEL EQUIPO
--Jorge Diego Arteaga
+-Jorge Diego Arteaga: 
+correo corporativo: j.diegoa.2016@alumnos.urjc.es
+GitHub: JorgeDiegoA
 -Alberto Hernández González 
--Sandra Morcuende Rodríguez 
+correo corporativo: a.hernandezg.2016@alumnos.urjc.es
+GitHub: Alberto-HG
+-Sandra Morcuende Rodríguez
+correo corporativo: s.morcuende.2016@alumnos.urjc.es
+GitHub: sanmr
 
+THE THIRD LAW productions
+GitHub: https://github.com/TheThirdLaw/JuegosEnRed&sa=D&ust=1537784370142000&usg=AFQjCNGokc5cMyLxbI9teY6N8zZDJvBNfQ
 
 
 
