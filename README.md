@@ -11,9 +11,9 @@ Trello del grupo: https://trello.com/b/gA3ICoHm/juegos-en-red
 ### 2.HISTORIAL DE VERSIONES
 ### 3.VISIÓN GENERAL DE JUEGO
 ### 4.MECÁNICA DEL JUEGO
-#### 4.1.cámara
-#### 4.2.controles
-#### 4.3.puntuación
+###  - Cámara
+###  - Controles
+###  - Puntuación
 ### 5.ESTADOS DEL JUEGO
 ### 6.INTERFACES
 ### 7.NIVELES
