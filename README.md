@@ -7,19 +7,19 @@ Trello del grupo: https://trello.com/b/gA3ICoHm/juegos-en-red
 <br><br>
 
 ## **ÍNDICE**
-### INFORMACIÓN GENERAL
-### HISTORIAL DE VERSIONES
-### VISIÓN GENERAL DE JUEGO
-### MECÁNICA DEL JUEGO
-#### cámara
-#### controles
-#### puntuación
-### ESTADOS DEL JUEGO
-### INTERFACES
-### NIVELES
-### PERSONAJE
-### ÍTEMS
-### MIEMBROS DEL EQUIPO
+### 1.INFORMACIÓN GENERAL
+### 2.HISTORIAL DE VERSIONES
+### 3.VISIÓN GENERAL DE JUEGO
+### 4.MECÁNICA DEL JUEGO
+#### 4.1.cámara
+#### 4.2.controles
+#### 4.3.puntuación
+### 5.ESTADOS DEL JUEGO
+### 6.INTERFACES
+### 7.NIVELES
+### 8.PERSONAJE
+### 9.ÍTEMS
+### 10.MIEMBROS DEL EQUIPO
 <br><br>
 <br><br>
 
