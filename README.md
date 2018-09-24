@@ -11,9 +11,9 @@ Trello del grupo: https://trello.com/b/gA3ICoHm/juegos-en-red
 ### 2. HISTORIAL DE VERSIONES
 ### 3. VISIÓN GENERAL DE JUEGO
 ### 4. MECÁNICA DEL JUEGO
-       #### 4.3. Cámara
-####    4.4. Controles
-####    4.5. Puntuación
+#### 4.3. Cámara 
+#### 4.4. Controles
+#### 4.5. Puntuación
 ### 5. ESTADOS DEL JUEGO
 ### 6. INTERFACES
 ### 7. NIVELES
@@ -46,7 +46,7 @@ El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugador
 
 <br><br>
 
-## **HISTORIAL DE VERSIONES**
+## **HISTORIAL DE VERSIONES*
 
 Creación del juego, versión alpha (1.0) - INICIO: 19/09/2018; FIN:
 
