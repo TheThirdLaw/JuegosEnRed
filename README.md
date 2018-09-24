@@ -5,7 +5,7 @@ The Third Law productions
 Trello del grupo: https://trello.com/b/gA3ICoHm/juegos-en-red
 
 
-<h1> **INFORMACIÓN GENERAL**
+<h1> INFORMACIÓN GENERAL <h1>
 
 Título: xxxxx
 
