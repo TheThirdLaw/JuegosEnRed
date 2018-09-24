@@ -46,6 +46,8 @@ NIVELES
 Dentro de lo que es el tiempo de juego, el escenario y la música se mantienen monótonos, conforme avanza el jugador, a una cierta distancia, van cambiando, pero como mera experiencia visual/auditiva, ya que lo realmente importante para la puntuación final se basa en la distancia recorrida y el nivel del rival. Además también aumenta la velocidad del juego.
 De manera externa, el nivel individual de cada jugador depende de la puntuación de cada partida. Conforme se avanza de nivel podemos acceder a camuflajes y trampas más avanzados.
 
+![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/images/In-game.jpg)
+
 
 PERSONAJE
 Propio de cada jugador, tiene una apariencia inicial básica que cada uno irá personalizando según sus posibilidades y sus preferencias.
