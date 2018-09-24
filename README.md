@@ -4,8 +4,11 @@ The Third Law productions
 Trello del grupo: https://trello.com/b/gA3ICoHm/juegos-en-red
 
 INFORMACIÓN GENERAL
+
 Título: xxxxx
+
 Estudio: The Third Law 
+
 Plataforma: PC
 Versión: 1.0
 Categoría: juego de plataformas, competitivo
