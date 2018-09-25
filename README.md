@@ -44,19 +44,19 @@ Público: todos los públicos
 
 El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para despistar a su rival, y colocarse tras él, donde los papeles se invierten y el perseguidor pasa a ser perseguido. El juego cuenta con un sistema de trampas (visuales y que además, restan puntuación) para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel.
 
-<br><br>
+<br>
 
 ## **HISTORIAL DE VERSIONES**
 
 Creación del juego, versión alpha (1.0) - INICIO: 19/09/2018; FIN:
 
-<br><br>
+<br>
 
 ## **VISIÓN GENERAL DEL JUEGO**
 
 Este proyecto está enfocado hacia un producto sencillo, pero entretenido, en el cual la competitividad entre dos jugadores aleatorios no se basará simplemente en huir, sino que también se necesitará estrategia para esconderse de tal forma que el compañero no consiga percibirle para, por ejemplo, conseguir alcanzarlo en el momento justo en el que lo adelante.
 
-<br><br>
+<br>
 
 ## **MECÁNICA DEL JUEGO**
 
@@ -82,7 +82,7 @@ En el juego existe un sistema de niveles y además uno monetario. Al ganar (o pe
 
 Estas recompensas dependen del nivel del rival (también pueden ser penalizaciones) y de un marcador de la distancia recorrida.
 
-<br><br>
+<br>
 
 ## **ESTADOS DEL JUEGO**
  
@@ -90,7 +90,7 @@ Estas recompensas dependen del nivel del rival (también pueden ser penalizacion
 
 -Tiempo de juego: con opciones de avanzar, esconderse, colocar trampas o abandonar la partida, lo que nos llevará al menú principal.
 
-<br><br>
+<br>
 
 ## **INTERFACES**
 
@@ -98,7 +98,7 @@ La línea del juego consiste en un estilo sencillo y geométrico-abstracto en to
 
 Interfaz visualmente sencilla y accesible, porque el videojuego no está enfocado a una sección de usuarios concreta.
 
-<br><br>
+<br>
 
 ## **NIVELES**
 
@@ -109,7 +109,7 @@ De manera externa, el nivel individual de cada jugador depende de la puntuación
 
 ![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/images/In-game.jpg)
 
-<br><br>
+<br>
 
 ## **PERSONAJE**
 
@@ -120,9 +120,10 @@ Propio de cada jugador, tiene una apariencia inicial básica que cada uno irá p
 ## **ÍTEMS**
 
 -Trampas: una especie de señuelos semejantes al personaje para confundir al perseguidor, bajar su puntuación, cegarle, etc.
+
 -Apariencias: intercambiables y accesibles a cambio de monedas, permiten al jugador personalizar su personaje y hacerlo más funcional, sirviéndole de camuflaje.
 
-<br><br>
+<br>
 
 
 ## **MIEMBROS DEL EQUIPO**
@@ -133,7 +134,7 @@ Correo corporativo: j.diegoa.2016@alumnos.urjc.es
 
 GitHub: JorgeDiegoA
 
-<br><br>
+<br>
 
 -Alberto Hernández González 
 
@@ -141,7 +142,7 @@ Correo corporativo: a.hernandezg.2016@alumnos.urjc.es
 
 GitHub: Alberto-HG
 
-<br><br>
+<br>
 
 -Sandra Morcuende Rodríguez
 
@@ -149,7 +150,7 @@ Correo corporativo: s.morcuende.2016@alumnos.urjc.es
 
 GitHub: sanmr
 
-<br><br>
+<br>
 
 ### THE THIRD LAW productions
 
