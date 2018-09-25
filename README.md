@@ -11,9 +11,10 @@ Trello del grupo: https://trello.com/b/gA3ICoHm/juegos-en-red
 ### 2. HISTORIAL DE VERSIONES
 ### 3. VISIÓN GENERAL DE JUEGO
 ### 4. MECÁNICA DEL JUEGO
-#### 4.3. Cámara 
-#### 4.4. Controles
-#### 4.5. Puntuación
+#### 4.1. Flujo de juego
+#### 4.2. Cámara 
+#### 4.3. Controles
+#### 4.4. Puntuación
 ### 5. ESTADOS DEL JUEGO
 ### 6. INTERFACES
 ### 7. NIVELES
@@ -39,10 +40,9 @@ Público: todos los públicos
 
 
 ![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/images/StartMenu.jpg)
-   
-   
 
-El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para colocarse el segundo, donde su misión será capturar a su compañero, el que realmente supondrá su rival. El juego cuenta con un sistema de trampas (visuales y que además, restan puntuación) para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel.
+
+El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para despistar a su rival, y colocarse tras él, donde los papeles se invierten y el perseguidor pasa a ser perseguido. El juego cuenta con un sistema de trampas (visuales y que además, restan puntuación) para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel.
 
 <br><br>
 
@@ -64,8 +64,11 @@ Al inicio del juego, se determina de manera aleatoria cuál de los dos jugadores
 
 Al ser un juego de plataformas los controles son sencillos, flechas hacia la derecha e izquierda para avanzar en el escenario, y las de arriba y abajo para conseguir esconderse, como en una especie de tercera dimensión, pero de manera plana.
 
+### Flujo de juego:
+Tras determinar quién inicia como perseguidor, y quién como perseguido, se inicia el juego. El perseguido tiene 15 segundos en los que es más rápido que su rival para poner trampas, esconderse, etc. Cuando esos 15 segundos terminan, el perseguidor empieza a ser más rápido que el perseguido, por lo que este último debe esconderse o será cazado sin remedio, y el perseguidor recibirá un bonus de puntuación. En el momento en el que el perseguidor se pasa de largo, se invierten posiciones y el bonus de puntuación se lo lleva el perseguido.
+
 ### Cámara: 
-utilizamos una perspectiva 2D lateral, y la cámara avanzará conforme avance (o retroceda) el jugador.
+Utilizamos una perspectiva 2D lateral, y la cámara avanzará conforme avance (o retroceda) el jugador.
 
 ### Controles: 
 Como ya mencionamos antes, los controles principales se basan en las flechas:<br><br>
@@ -89,11 +92,11 @@ Estas recompensas dependen del nivel del rival (también pueden ser penalizacion
 
 <br><br>
 
-## **INTEFACES**
+## **INTERFACES**
 
 La línea del juego consiste en un estilo sencillo y geométrico-abstracto en tonos oscuros.
 
-Interface visualmente sencilla y accesible, porque el videojuego no está enfocado a una sección de usuarios concreta.
+Interfaz visualmente sencilla y accesible, porque el videojuego no está enfocado a una sección de usuarios concreta.
 
 <br><br>
 
@@ -116,7 +119,7 @@ Propio de cada jugador, tiene una apariencia inicial básica que cada uno irá p
 
 ## **ÍTEMS**
 
--Trampas: una especie de destellos para confundir al perseguidor y además bajar su puntuación.
+-Trampas: una especie de señuelos semejantes al personaje para confundir al perseguidor, bajar su puntuación, cegarle, etc.
 -Apariencias: intercambiables y accesibles a cambio de monedas, permiten al jugador personalizar su personaje y hacerlo más funcional, sirviéndole de camuflaje.
 
 <br><br>
@@ -126,7 +129,7 @@ Propio de cada jugador, tiene una apariencia inicial básica que cada uno irá p
 
 -Jorge Diego Arteaga: 
 
-correo corporativo: j.diegoa.2016@alumnos.urjc.es
+Correo corporativo: j.diegoa.2016@alumnos.urjc.es
 
 GitHub: JorgeDiegoA
 
@@ -134,7 +137,7 @@ GitHub: JorgeDiegoA
 
 -Alberto Hernández González 
 
-correo corporativo: a.hernandezg.2016@alumnos.urjc.es
+Correo corporativo: a.hernandezg.2016@alumnos.urjc.es
 
 GitHub: Alberto-HG
 
@@ -142,7 +145,7 @@ GitHub: Alberto-HG
 
 -Sandra Morcuende Rodríguez
 
-correo corporativo: s.morcuende.2016@alumnos.urjc.es
+Correo corporativo: s.morcuende.2016@alumnos.urjc.es
 
 GitHub: sanmr
 
