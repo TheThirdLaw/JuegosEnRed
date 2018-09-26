@@ -1,4 +1,4 @@
-﻿# **NO-NAME GAME**
+# **NO-NAME GAME**
  
 The Third Law productions
 
@@ -63,10 +63,10 @@ Este proyecto está enfocado hacia un producto sencillo, pero entretenido, en el
 ## **MECÁNICA DEL JUEGO**
 Al inicio del juego, se determina de manera semi-aleatoria, con un matchmaking que tiene en cuenta el número de partidas jugadas y el porcentaje de victorias del jugador, cual será el rival del jugador, y de forma totalmente aleatoria cuál de los dos jugadores iniciará la marcha. 
 
-Al ser un juego de plataformas los controles son sencillos, flechas hacia la derecha e izquierda para avanzar en el escenario, y las de arriba y abajo para conseguir esconderse, como en una especie de tercera dimensión, pero de manera plana.
+Al ser un juego de plataformas los controles son sencillos, flechas hacia la derecha e izquierda para avanzar en el escenario, y las de arriba y abajo para conseguir esconderse, como en tercera dimensión, pero de manera plana.
 
 ### Flujo de juego:
-Tras determinar quién inicia como perseguidor, y quién como perseguido, se inicia el juego. El perseguido tiene 15 segundos en los que es más rápido que su rival para poner trampas, esconderse, etc. Cuando esos 15 segundos terminan, el perseguidor empieza a ser más rápido que el perseguido, por lo que este último debe esconderse o será cazado sin remedio, y el perseguidor recibirá un bonus de puntuación. En el momento en el que el perseguidor se pasa de largo, se invierten posiciones y el bonus de puntuación se lo lleva el perseguido.
+Tras determinar quién inicia como perseguidor, y quién como perseguido, se inicia el juego. El perseguido tiene X segundos en los que es más rápido que su rival para poner trampas, esconderse, etc. Cuando esos X segundos terminan, el perseguidor puede empezar a usar power-ups y empieza a ser más rápido que el perseguido, por lo que este último debe esconderse o será cazado sin remedio, y el perseguidor recibirá un bonus de oro. En el momento en el que el perseguidor se pasa de largo, se invierten posiciones (aparece en plantalla un mensaje de "HUYE" o "CAZA"). Si se agota Y tiempo sin ser descubierto o sin que el perseguidor sobrepase al perseguido, el perseguido gana la partida y el bonus de oro -menor que por cazar- se lo lleva el perseguido. Las partidas durarán como máximo Z minutos.
 
 ### Cámara: 
 Utilizamos una perspectiva 2D lateral, y la cámara avanzará conforme avance (o retroceda) el jugador.
@@ -103,9 +103,9 @@ Interfaz visualmente sencilla y accesible, porque el videojuego no está enfocad
 
 ## **NIVELES**
 
-Dentro de lo que es el tiempo de juego, el escenario y la música se mantienen monótonos, conforme avanza el jugador, a una cierta distancia, van cambiando, pero como mera experiencia visual/auditiva, ya que lo realmente importante para la puntuación final se basa en la distancia recorrida y el nivel del rival. Además también aumenta la velocidad del juego.
+Dentro de lo que es el tiempo de juego, el escenario y la música se mantienen monótonos, conforme avanza el jugador, a una cierta distancia, van cambiando, pero como mera experiencia visual/auditiva, ya que lo realmente importante para la puntuación final se basa en la distancia recorrida y el nivel del rival. El escenario será generado aleatoriamente a partir de fragmentos de escenarios predeterminados.
 
-De manera externa, el nivel individual de cada jugador depende de la puntuación de cada partida. Conforme se avanza de nivel podemos acceder a camuflajes y trampas más avanzados.
+De manera externa, el nivel individual de cada jugador, y su oro, depende de la puntuación de cada partida. Conforme se avanza de nivel podemos acceder a camuflajes y trampas más avanzados.
 
 
 ![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/images/In-game-v2.png)
@@ -120,9 +120,11 @@ Propio de cada jugador, tiene una apariencia inicial básica que cada uno irá p
 
 ## **ÍTEMS**
 
--Trampas: una especie de señuelos semejantes al personaje para confundir al perseguidor, bajar su puntuación, cegarle, etc.
+-Trampas: una especie de señuelos semejantes al personaje para confundir al perseguidor, bajar su puntuación, cegarle, etc. Cada trampa tiene un tiempo de recarga propio.
 
 -Apariencias: intercambiables y accesibles a cambio de monedas, permiten al jugador personalizar su personaje y hacerlo más funcional, sirviéndole de camuflaje.
+
+-Power-ups: Ayudas para el perseguidor que solo podrá usar tras los X segundos donde es más lento que su rival. Sirven como propulsión, saltos, etc.
 
 <br>
 
