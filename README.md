@@ -49,6 +49,7 @@ El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugador
 ## **HISTORIAL DE VERSIONES**
 
 Desarrollo del GDD, creación del juego, Fase 1 - INICIO: 19/09/2018; FIN: 26/09/2018
+
 Creación del juego, versión alpha offline, Fase 2 - INICIO: 26/09/2018; FIN:
 
 <br>
