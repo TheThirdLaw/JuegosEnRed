@@ -1,4 +1,4 @@
-# **NO-NAME GAME**
+﻿# **NO-NAME GAME**
  
 The Third Law productions
 
@@ -59,7 +59,7 @@ Este proyecto está enfocado hacia un producto sencillo, pero entretenido, en el
 <br>
 
 ## **MECÁNICA DEL JUEGO**
-Al inicio del juego, se determina de manera semi-aleatoria,teniendo en cuenta el número de partidas jugadas y el porcentaje de victorias del jugador, cual será el rival del jugador, y de forma totalmente aleatoria cuál de los dos jugadores iniciará la marcha. 
+Al inicio del juego, se determina de manera semi-aleatoria, con un matchmaking que tiene en cuenta el número de partidas jugadas y el porcentaje de victorias del jugador, cual será el rival del jugador, y de forma totalmente aleatoria cuál de los dos jugadores iniciará la marcha. 
 
 Al ser un juego de plataformas los controles son sencillos, flechas hacia la derecha e izquierda para avanzar en el escenario, y las de arriba y abajo para conseguir esconderse, como en una especie de tercera dimensión, pero de manera plana.
 
@@ -106,7 +106,7 @@ Dentro de lo que es el tiempo de juego, el escenario y la música se mantienen m
 De manera externa, el nivel individual de cada jugador depende de la puntuación de cada partida. Conforme se avanza de nivel podemos acceder a camuflajes y trampas más avanzados.
 
 
-![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/images/In-game.jpg)
+![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/images/In-game-v2.jpg)
 
 <br>
 
