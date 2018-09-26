@@ -59,8 +59,7 @@ Este proyecto está enfocado hacia un producto sencillo, pero entretenido, en el
 <br>
 
 ## **MECÁNICA DEL JUEGO**
-
-Al inicio del juego, se determina de manera aleatoria cuál de los dos jugadores iniciará la marcha. 
+Al inicio del juego, se determina de manera semi-aleatoria,teniendo en cuenta el número de partidas jugadas y el porcentaje de victorias del jugador, cual será el rival del jugador, y de forma totalmente aleatoria cuál de los dos jugadores iniciará la marcha. 
 
 Al ser un juego de plataformas los controles son sencillos, flechas hacia la derecha e izquierda para avanzar en el escenario, y las de arriba y abajo para conseguir esconderse, como en una especie de tercera dimensión, pero de manera plana.
 
