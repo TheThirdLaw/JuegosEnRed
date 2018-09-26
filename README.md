@@ -107,7 +107,7 @@ Dentro de lo que es el tiempo de juego, el escenario y la música se mantienen m
 De manera externa, el nivel individual de cada jugador depende de la puntuación de cada partida. Conforme se avanza de nivel podemos acceder a camuflajes y trampas más avanzados.
 
 
-![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/images/In-game-v2.jpg)
+![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/images/In-game-v2.png)
 
 <br>
 
