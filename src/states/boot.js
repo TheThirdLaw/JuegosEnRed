@@ -11,10 +11,11 @@ NoName.bootState.prototype = {
     },
 
     create: function() {
-
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+        game.state.start('preloadState');
     },
 
     update: function() {
-
+      
     }
 }
