@@ -1,4 +1,4 @@
-NoName.menuState = function(game) {
+NoName.levelState = function(game) {
 
 }
 
@@ -20,14 +20,6 @@ NoName.levelState.prototype = {
         this.aKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
         this.dKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
 
-        //Variable punctuation
-        puntuacion = 0;
-
-        //Sprites
-        /* bg = game.add.sprite(0, 0, 'backGround');
-        cat = game.add.sprite(0, 20, 'cat');
-        catCatcher = game.add.sprite(200, 200, 'catCatcher'); */
-
         //Activate collision
         game.physics.enable(player, Phaser.Physics.ARCADE);
         game.physics.enable(rival, Phaser.Physics.ARCADE);
@@ -36,27 +28,27 @@ NoName.levelState.prototype = {
     update: function() {
         //Press keys
         if(this.wKey.isDown){
-            catCatcher.y -= 3;
+            player.y -= 3;
         }
         if(this.sKey.isDown){
-            catCatcher.y += 3;
+            player.y += 3;
         }
         if(this.aKey.isDown){
-            catCatcher.x -= 3;
+            player.x -= 3;
         }
         if(this.dKey.isDown){
-            catCatcher.x += 3;
+            player.x += 3;
         }
 
         //Check collision
         var collision = game.physics.arcade.collide(player, rival);
 
         if(collision) {
-            thecollision();
+            theCollision();
         }
 
         //If there is a collision:
-        function  thecollision() {
+        function theCollision() {
 
         }
     }
