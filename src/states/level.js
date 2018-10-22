@@ -2,18 +2,6 @@ NoName.levelState = function(game) {
 
 }
 
-var xsize = 25;
-var ysize = 25;
-
-var ygame = 305;
-var xgame;
-
-var player = game.add.sprite(0,0,'example_char');
-player.width = 25;
-player.height = 25;
-var bg;
-var rival;
-
 NoName.levelState.prototype = {
     
     preload: function() {
@@ -22,6 +10,11 @@ NoName.levelState.prototype = {
     },
 
     create: function() {
+        //Create variables
+        var size = 0.025;
+        var ygame = 305;
+        var xgame;
+
         //Register the keys.
         this.wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
         this.sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
@@ -30,7 +23,10 @@ NoName.levelState.prototype = {
 
         //Add sprites
         bg = game.add.sprite(0, 0, 'background');
-        rival = game.add.sprite(0, ygame, 'example_enem');
+        var player = game.add.sprite(20, ygame,'example_char');
+        player.scale.setTo(size, size);
+        var rival = game.add.sprite(0, ygame, 'example_enem');
+        rival.scale.setTo(size, size);
 
         //Activate collision
         game.physics.enable(player, Phaser.Physics.ARCADE);
@@ -42,14 +38,14 @@ NoName.levelState.prototype = {
         if(this.wKey.isDown){
             if(ygame > 305){
                 player.y -= 3;
-                xsize = xsize - 0.25;
+                size = size - 0.25;
                 ygame -= 3;
             }
         }
         if(this.sKey.isDown){
             if(ygame < 599){
                 player.y += 3;
-                xsize = xsize + 0.25;
+                size = size + 0.25;
                 ygame += 3;
             }
         }
@@ -65,6 +61,8 @@ NoName.levelState.prototype = {
 
         if(collision) {
             theCollision();
+
+            //Checks who is behind, that one
         }
 
         //If there is a collision:
