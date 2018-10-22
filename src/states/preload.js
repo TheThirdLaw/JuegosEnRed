@@ -11,6 +11,7 @@ NoName.preloadState.prototype = {
         game.load.image('settings', 'assets/menu/rsz_SettingsButton.png');
         game.load.image('play', 'assets/menu/rsz_PlayButton.png');
         game.load.image('shop', 'assets/menu/rsz_ShopButton.png');
+        game.load.image('title', 'assets/menu/rsz_Title.png');
         //Loading Text
         var text = "Cargando Assets...";
         var style = { font: "65px Arial", fill: "#ff0044", align: "center" };

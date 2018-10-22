@@ -19,6 +19,7 @@ NoName.menuState.prototype = {
         game.add.tileSprite(0, 0, 800, 600, 'settings');
         game.add.tileSprite(0, 0, 800, 600, 'play');
         game.add.tileSprite(0, 0, 800, 600, 'shop');
+        game.add.tileSprite(0, 0, 800, 600, 'title');
     },
 
     update: function() {
