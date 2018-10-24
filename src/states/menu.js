@@ -2,8 +2,6 @@ NoName.menuState = function(game) {
 
 }
 
-var eKey;
-
 NoName.menuState.prototype = {
 
     preload: function() {
@@ -16,15 +14,25 @@ NoName.menuState.prototype = {
 
     create: function() {
         game.add.tileSprite(0, 0, 800, 600, 'background');
-        game.add.tileSprite(0, 0, 800, 600, 'settings');
-        game.add.tileSprite(0, 0, 800, 600, 'play');
-        game.add.tileSprite(0, 0, 800, 600, 'shop');
         game.add.tileSprite(0, 0, 800, 600, 'title');
+        game.add.button(100, 200, 'play', playButton, this);
+        game.add.button(101, 370, 'settings', settingsButton, this);
+        game.add.button(245, 370, 'shop', shopButton, this);
     },
 
     update: function() {
-        if(this.eKey.isDown){
-            game.state.start('levelState');
-        }
+
     }
+}
+
+function playButton() {
+    game.state.start('levelState');
+}
+
+function shopButton() {
+
+}
+
+function settingsButton() {
+
 }

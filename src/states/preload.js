@@ -8,9 +8,9 @@ NoName.preloadState.prototype = {
 
         //Load Assets
         game.load.image('background', 'assets/menu/rsz_Background.png');
-        game.load.image('settings', 'assets/menu/rsz_SettingsButton.png');
-        game.load.image('play', 'assets/menu/rsz_PlayButton.png');
-        game.load.image('shop', 'assets/menu/rsz_ShopButton.png');
+        game.load.image('settings', 'assets/botones 2.0/rsz_bconfreposo.png');
+        game.load.image('play', 'assets/botones 2.0/rsz_bplayreposo.png');
+        game.load.image('shop', 'assets/botones 2.0/rsz_bshopreposo.png');
         game.load.image('title', 'assets/menu/rsz_Title.png');
 
         game.load.image('example_char', 'assets/personajes/BrownSquareV2.png');
