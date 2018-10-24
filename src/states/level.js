@@ -2,6 +2,12 @@ NoName.levelState = function(game) {
 
 }
 
+var bg;
+var player;
+var xgame;
+var ygame;
+var size;
+
 NoName.levelState.prototype = {
     
     preload: function() {
@@ -11,9 +17,9 @@ NoName.levelState.prototype = {
 
     create: function() {
         //Create variables
-        var size = 0.025;
-        var ygame = 305;
-        var xgame;
+        size = 0.05;
+        ygame = 320;
+        xgame = 10;
 
         //Register the keys.
         this.wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -23,41 +29,42 @@ NoName.levelState.prototype = {
 
         //Add sprites
         bg = game.add.sprite(0, 0, 'background');
-        var player = game.add.sprite(20, ygame,'example_char');
+        player = game.add.sprite(xgame, ygame, 'example_char');
         player.scale.setTo(size, size);
-        var rival = game.add.sprite(0, ygame, 'example_enem');
-        rival.scale.setTo(size, size);
 
         //Activate collision
         game.physics.enable(player, Phaser.Physics.ARCADE);
-        game.physics.enable(rival, Phaser.Physics.ARCADE);
     },
 
     update: function() {
         //Press keys
         if(this.wKey.isDown){
-            if(ygame > 305){
+            if(ygame > 320){
                 player.y -= 3;
-                size = size - 0.25;
+                size -= 0.001;
+                player.scale.setTo(size, size);
                 ygame -= 3;
             }
         }
         if(this.sKey.isDown){
             if(ygame < 599){
                 player.y += 3;
-                size = size + 0.25;
+                size += 0.001;
+                player.scale.setTo(size, size);
                 ygame += 3;
             }
         }
         if(this.aKey.isDown){
-            player.x -= 3;
+            if(player.x >= xgame){
+                player.x -= 3;
+            }
         }
         if(this.dKey.isDown){
             player.x += 3;
         }
 
         //Check collision
-        var collision = game.physics.arcade.collide(player, rival);
+        var collision = game.physics.arcade.collide(player);
 
         if(collision) {
             theCollision();
