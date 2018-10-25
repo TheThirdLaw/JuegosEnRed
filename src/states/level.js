@@ -2,11 +2,18 @@ NoName.levelState = function(game) {
 
 }
 
+//Declaración de variables
 var bg;
+
 var player;
 var xgame;
 var ygame;
 var size;
+
+var rival;
+var xgameR;
+var ygameR;
+var sizeR;
 
 NoName.levelState.prototype = {
     
@@ -16,30 +23,46 @@ NoName.levelState.prototype = {
     },
 
     create: function() {
-        //Create variables
+        //Variables
         size = 0.05;
-        ygame = 320;
+        ygame = 310;
         xgame = 10;
 
-        //Register the keys.
+        sizeR = 0.05;
+        ygameR = 310;
+        xgameR = 40;
+
+
+        bg = game.add.sprite(0, 0, 'background');
+
+        //PLAYER
         this.wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
         this.sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
         this.aKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
         this.dKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
 
-        //Add sprites
-        bg = game.add.sprite(0, 0, 'background');
         player = game.add.sprite(xgame, ygame, 'example_char');
         player.scale.setTo(size, size);
 
-        //Activate collision
         game.physics.enable(player, Phaser.Physics.ARCADE);
+
+
+        //RIVAL
+        this.wRKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+        this.sRKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+        this.aRKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+        this.dRKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+
+        rival = game.add.sprite(xgameR, ygameR, 'example_enem');
+        rival.scale.setTo(sizeR, sizeR);
+
+        game.physics.enable(rival, Phaser.Physics.ARCADE);
     },
 
     update: function() {
-        //Press keys
+        //PLAYER KEYS
         if(this.wKey.isDown){
-            if(ygame > 320){
+            if(ygame > 310){
                 player.y -= 3;
                 size -= 0.001;
                 player.scale.setTo(size, size);
@@ -63,8 +86,34 @@ NoName.levelState.prototype = {
             player.x += 3;
         }
 
+        //RIVAL KEYS
+        if(this.wRKey.isDown){
+            if(ygameR > 310){
+                rival.y -= 3;
+                sizeR -= 0.001;
+                rival.scale.setTo(sizeR, sizeR);
+                ygameR -= 3;
+            }
+        }
+        if(this.sRKey.isDown){
+            if(ygameR < 599){
+                rival.y += 3;
+                sizeR += 0.001;
+                rival.scale.setTo(sizeR, sizeR);
+                ygameR += 3;
+            }
+        }
+        if(this.aRKey.isDown){
+            if(rival.x >= xgame){
+                rival.x -= 3;
+            }
+        }
+        if(this.dRKey.isDown){
+            rival.x += 3;
+        }
+
         //Check collision
-        var collision = game.physics.arcade.collide(player);
+        var collision = game.physics.arcade.collide(player, rival);
 
         if(collision) {
             theCollision();
