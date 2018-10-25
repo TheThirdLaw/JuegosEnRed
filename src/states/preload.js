@@ -13,8 +13,8 @@ NoName.preloadState.prototype = {
         game.load.image('shop', 'assets/botones 2.0/rsz_bshopreposo.png');
         game.load.image('title', 'assets/menu/rsz_Title.png');
 
-        game.load.image('example_char', 'assets/personajes/BrownSquareV2.png');
-        game.load.image('example_enem', 'assets/personajes/BlueSquareV2.png');
+        game.load.image('example_char', 'assets/personajes 2.0/P1aA.png');
+        game.load.image('example_enem', 'assets/personajes 2.0/P1nA.png');
 
         //Loading Text
         var text = "Cargando Assets...";

@@ -25,12 +25,12 @@ NoName.levelState.prototype = {
     create: function() {
         //Variables
         size = 0.05;
-        ygame = 310;
+        ygame = 320;
         xgame = 10;
 
         sizeR = 0.05;
-        ygameR = 310;
-        xgameR = 40;
+        ygameR = 320;
+        xgameR = 100;
 
 
         bg = game.add.sprite(0, 0, 'background');
@@ -113,17 +113,10 @@ NoName.levelState.prototype = {
         }
 
         //Check collision
-        var collision = game.physics.arcade.collide(player, rival);
-
-        if(collision) {
-            theCollision();
-
-            //Checks who is behind, that one
-        }
-
-        //If there is a collision:
-        function theCollision() {
-
+        game.physics.arcade.collide(player, rival, collision);
+        
+        function  collision() {
+            game.state.start('endState');
         }
     }
 }
