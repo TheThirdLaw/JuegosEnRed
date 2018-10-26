@@ -23,6 +23,10 @@ NoName.levelState.prototype = {
     },
 
     create: function() {
+
+        game.add.tileSprite(0, 0, 8000000, 600, 'background');
+        game.world.setBounds(0, 0, 8000000, 600);
+
         //Variables
         size = 0.05;
         ygame = 320;
@@ -57,12 +61,15 @@ NoName.levelState.prototype = {
         rival.scale.setTo(sizeR, sizeR);
 
         game.physics.enable(rival, Phaser.Physics.ARCADE);
+
+        //Camera
+        game.camera.follow(player);
     },
 
     update: function() {
         //PLAYER KEYS
         if(this.wKey.isDown){
-            if(ygame > 310){
+            if(ygame > 320){
                 player.y -= 3;
                 size -= 0.001;
                 player.scale.setTo(size, size);
@@ -88,7 +95,7 @@ NoName.levelState.prototype = {
 
         //RIVAL KEYS
         if(this.wRKey.isDown){
-            if(ygameR > 310){
+            if(ygameR > 320){
                 rival.y -= 3;
                 sizeR -= 0.001;
                 rival.scale.setTo(sizeR, sizeR);
