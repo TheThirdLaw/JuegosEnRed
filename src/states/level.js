@@ -37,7 +37,7 @@ NoName.levelState.prototype = {
         xgameR = 100;
 
 
-        bg = game.add.sprite(0, 0, 'background');
+        //bg = game.add.sprite(0, 0, 'background');
 
         //PLAYER
         this.wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
