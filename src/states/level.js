@@ -126,14 +126,14 @@ NoName.levelState.prototype = {
     }
 }
 
-    function  collision() {
-        game.state.start('endState');
-    }
+function  collision() {
+    game.state.start('endState');
+}
 
-    function makeinvisible(sprite){
-        sprite.visible = false;
-    }
+function makeinvisible(sprite){
+    sprite.visible = false;
+}
 
-    function makevisible(sprite){
-        sprite.visible = true;
-    }
+function makevisible(sprite){
+    sprite.visible = true;
+}

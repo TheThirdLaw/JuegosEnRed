@@ -30,7 +30,7 @@ NoName.pregameState.prototype = {
 }
 
 function playPregame() {
-    game.state.start('levelState');
+    game.state.start('countState');
 }
 
 function flechaD() {
