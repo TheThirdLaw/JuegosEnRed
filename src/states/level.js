@@ -14,6 +14,7 @@ var ygameR;
 var sizeR;
 
 var roca;
+var job;
 
 NoName.levelState.prototype = {
     
@@ -60,9 +61,22 @@ NoName.levelState.prototype = {
 
         //Camera
         game.camera.follow(player);
+
+        job = game.add.text(20, 20, "", {
+            font: "35px Arial",
+            fill: "#ff0044",
+            align: "center"
+        });
     },
 
     update: function() {
+        //Text on the left corner
+        if(player.x < rival.x){
+            job.setText('¡Persíguelo!');
+        }else if(rival.x < player.x){
+            job.setText('¡Huye!');
+        }
+
         //PLAYER KEYS
         if(this.wKey.isDown){
             if(ygame > 320){
@@ -73,7 +87,7 @@ NoName.levelState.prototype = {
             }
         }
         if(this.sKey.isDown){
-            if(ygame < 599){
+            if(ygame < 550){
                 player.y += 3;
                 size += 0.001;
                 player.scale.setTo(size, size);
@@ -99,7 +113,7 @@ NoName.levelState.prototype = {
             }
         }
         if(this.sRKey.isDown){
-            if(ygameR < 599){
+            if(ygameR < 550){
                 rival.y += 3;
                 sizeR += 0.001;
                 rival.scale.setTo(sizeR, sizeR);
@@ -123,11 +137,19 @@ NoName.levelState.prototype = {
 
         !game.physics.arcade.collide(player, roca, makevisible(player));
         !game.physics.arcade.collide(rival, roca, makevisible(rival));
+
+        if(player.x >= 16000 || rival.x >= 16000){
+            nowinner();
+        }
     }
 }
 
 function  collision() {
     game.state.start('endState');
+}
+
+function nowinner(){
+    game.state.start('tieState');
 }
 
 function makeinvisible(sprite){

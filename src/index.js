@@ -6,6 +6,7 @@ game.state.add('menuState', NoName.menuState)
 game.state.add('pregameState', NoName.pregameState)
 game.state.add('countState', NoName.countState)
 game.state.add('levelState', NoName.levelState)
+game.state.add('tieState', NoName.tieState);
 game.state.add('endState', NoName.endState)
   
 game.state.start('bootState')
