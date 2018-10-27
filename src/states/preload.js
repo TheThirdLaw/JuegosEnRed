@@ -21,6 +21,7 @@ NoName.preloadState.prototype = {
         game.load.image('morderbloq', 'assets/botones 2.0/rsz_bmorderbloq.png');
         game.load.image('interfacecartas', 'assets/botones 2.0/rsz_bniinterfacecartas.png');
         game.load.image('salto', 'assets/botones 2.0/rsz_bsalto.png');
+        game.load.spritesheet('menu', 'assets/botones 2.0/rsz_bmenu.png', 249, 149);        
 
         game.load.image('example_char', 'assets/personajes 2.0/P1aA.png');
         game.load.image('example_enem', 'assets/personajes 2.0/P1nA.png');
