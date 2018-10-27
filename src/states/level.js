@@ -39,7 +39,6 @@ NoName.levelState.prototype = {
         //PLAYER
         this.wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
         this.sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
-        this.aKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
         this.dKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
 
         player = game.add.sprite(xgame, ygame, 'example_char');
@@ -51,7 +50,6 @@ NoName.levelState.prototype = {
         //RIVAL
         this.wRKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
         this.sRKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
-        this.aRKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
         this.dRKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
 
         rival = game.add.sprite(xgameR, ygameR, 'example_enem');
@@ -94,11 +92,6 @@ NoName.levelState.prototype = {
                 ygame += 3;
             }
         }
-        if(this.aKey.isDown){
-            if(player.x >= xgame){
-                player.x -= 3;
-            }
-        }
         if(this.dKey.isDown){
             player.x += 3;
         }
@@ -118,11 +111,6 @@ NoName.levelState.prototype = {
                 sizeR += 0.001;
                 rival.scale.setTo(sizeR, sizeR);
                 ygameR += 3;
-            }
-        }
-        if(this.aRKey.isDown){
-            if(rival.x >= xgame){
-                rival.x -= 3;
             }
         }
         if(this.dRKey.isDown){
