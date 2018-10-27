@@ -3,7 +3,6 @@ NoName.levelState = function(game) {
 }
 
 //Declaración de variables
-
 var player;
 var xgame;
 var ygame;
