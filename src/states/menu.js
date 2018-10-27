@@ -5,11 +5,7 @@ NoName.menuState = function(game) {
 NoName.menuState.prototype = {
 
     preload: function() {
-        //Start Menu
-        var text = "Pulsa E";
-        var style = { font: "45px Arial", fill: "#0040FF", align: "center" };
-        var t = game.add.text(game.world.centerX-200, 0, text, style);
-        this.eKey = game.input.keyboard.addKey(Phaser.Keyboard.E);
+        
     },
 
     create: function() {
@@ -26,7 +22,7 @@ NoName.menuState.prototype = {
 }
 
 function playButton() {
-    game.state.start('levelState');
+    game.state.start('pregameState');
 }
 
 function shopButton() {

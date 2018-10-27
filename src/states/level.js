@@ -3,7 +3,6 @@ NoName.levelState = function(game) {
 }
 
 //Declaración de variables
-var bg;
 
 var player;
 var xgame;
@@ -19,13 +18,12 @@ NoName.levelState.prototype = {
     
     preload: function() {
         
-        
     },
 
     create: function() {
 
-        game.add.tileSprite(0, 0, 8000000, 600, 'background');
-        game.world.setBounds(0, 0, 8000000, 600);
+        game.add.tileSprite(0, 0, 16000, 600, 'background');
+        game.world.setBounds(0, 0, 16000, 600);
 
         //Variables
         size = 0.05;
@@ -35,9 +33,6 @@ NoName.levelState.prototype = {
         sizeR = 0.05;
         ygameR = 320;
         xgameR = 100;
-
-
-        //bg = game.add.sprite(0, 0, 'background');
 
         //PLAYER
         this.wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -127,4 +122,3 @@ NoName.levelState.prototype = {
         }
     }
 }
-
