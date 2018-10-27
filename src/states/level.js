@@ -13,6 +13,8 @@ var xgameR;
 var ygameR;
 var sizeR;
 
+var roca;
+
 NoName.levelState.prototype = {
     
     preload: function() {
@@ -115,9 +117,23 @@ NoName.levelState.prototype = {
 
         //Check collision
         game.physics.arcade.collide(player, rival, collision);
-        
-        function  collision() {
-            game.state.start('endState');
-        }
+
+        game.physics.arcade.collide(player, roca, makeinvisible(player));
+        game.physics.arcade.collide(rival, roca, makeinvisible(rival));
+
+        !game.physics.arcade.collide(player, roca, makevisible(player));
+        !game.physics.arcade.collide(rival, roca, makevisible(rival));
     }
 }
+
+    function  collision() {
+        game.state.start('endState');
+    }
+
+    function makeinvisible(sprite){
+        sprite.visible = false;
+    }
+
+    function makevisible(sprite){
+        sprite.visible = true;
+    }
