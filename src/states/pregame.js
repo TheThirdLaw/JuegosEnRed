@@ -1,6 +1,11 @@
 NoName.pregameState = function(game){
 
 }
+
+var bombrsz;
+var LOrsz;
+var jumprsz;
+
 NoName.pregameState.prototype = {
 
     preload: function(){
@@ -37,11 +42,13 @@ function flechaI() {
 }
 
 function bomb() {
-
+    bombrsz = game.add.button(283, 352, 'bomb', outSprite1, this);
+    bombrsz.scale.setTo(0.535);
 }
 
 function lightsOut() {
-
+    LOrsz = game.add.button(365, 353, 'lightsout', outSprite2, this);
+    LOrsz.scale.setTo(0.535);
 }
 
 function morderbloq() {
@@ -49,6 +56,18 @@ function morderbloq() {
 }
 
 function salto() {
-
+    jumprsz = game.add.button(447, 352, 'salto', outSprite3, this);
+    jumprsz.scale.setTo(0.535);
 }
 
+function outSprite1() {
+    bombrsz.pendingDestroy = true;
+}
+
+function outSprite2() {
+    LOrsz.pendingDestroy = true;
+}
+
+function outSprite3() {
+    jumprsz.pendingDestroy = true;
+}
