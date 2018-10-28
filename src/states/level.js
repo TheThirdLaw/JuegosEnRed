@@ -123,7 +123,7 @@ NoName.levelState.prototype = {
         if(this.dKey.isDown){
             if(player.x >= 400){
                 job.x += speed;
-                //bomba.x += speed;
+                bomba.x += speed;
                 luces.x += speed;
                 salto.x += speed;
             }
