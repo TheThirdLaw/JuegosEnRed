@@ -7,14 +7,18 @@ var player;
 var xgame;
 var ygame;
 var size;
+var speed = 3;
 
 var rival;
 var xgameR;
 var ygameR;
 var sizeR;
+var speedR = 4;
 
 var roca;
 var job;
+var spcont = 5;
+var sptimer;
 
 NoName.levelState.prototype = {
     
@@ -65,6 +69,8 @@ NoName.levelState.prototype = {
             fill: "#ff0044",
             align: "center"
         });
+
+        sptimer = game.time.events.add(Phaser.Timer.SECOND * 5, speedy, this);
     },
 
     update: function() {
@@ -78,7 +84,7 @@ NoName.levelState.prototype = {
         //PLAYER KEYS
         if(this.wKey.isDown){
             if(ygame > 320){
-                player.y -= 3;
+                player.y -= speed;
                 size -= 0.001;
                 player.scale.setTo(size, size);
                 ygame -= 3;
@@ -86,7 +92,7 @@ NoName.levelState.prototype = {
         }
         if(this.sKey.isDown){
             if(ygame < 550){
-                player.y += 3;
+                player.y += speed;
                 size += 0.001;
                 player.scale.setTo(size, size);
                 ygame += 3;
@@ -94,15 +100,15 @@ NoName.levelState.prototype = {
         }
         if(this.dKey.isDown){
             if(player.x >= 400){
-                job.x += 3;
+                job.x += speed;
             }
-            player.x += 3;
+            player.x += speed;
         }
 
         //RIVAL KEYS
         if(this.wRKey.isDown){
             if(ygameR > 320){
-                rival.y -= 3;
+                rival.y -= speedR;
                 sizeR -= 0.001;
                 rival.scale.setTo(sizeR, sizeR);
                 ygameR -= 3;
@@ -110,14 +116,14 @@ NoName.levelState.prototype = {
         }
         if(this.sRKey.isDown){
             if(ygameR < 550){
-                rival.y += 3;
+                rival.y += speedR;
                 sizeR += 0.001;
                 rival.scale.setTo(sizeR, sizeR);
                 ygameR += 3;
             }
         }
         if(this.dRKey.isDown){
-            rival.x += 3;
+            rival.x += speedR;
         }
 
         //Check collision
@@ -149,4 +155,8 @@ function makeinvisible(sprite){
 
 function makevisible(sprite){
     sprite.visible = true;
+}
+
+function speedy(){
+    speedR = 3;
 }
