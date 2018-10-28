@@ -7,14 +7,15 @@ var player;
 var xgame;
 var ygame;
 var size;
-var speed = 3;
+var yspeed = 3;
 var xspeed = 3;
     
 var rival;
 var xgameR;
 var ygameR;
 var sizeR;
-var speedR = 4;
+var xspeedR = 4;
+var yspeedR = 3;
     
 var roca;
 var job;
@@ -34,6 +35,11 @@ var xtrap;
 var ytrap;
         
 var salto;
+var jcont = 0;
+var saltotime = 0;
+var jumppos;
+var jsize = size;
+var jumptime;
     
 NoName.levelState.prototype = {
         
@@ -73,7 +79,8 @@ NoName.levelState.prototype = {
 
         //POWER-UPS && TRAPS
         this.oKey = game.input.keyboard.addKey(Phaser.Keyboard.O);
-        this.iKey = game.input.keyboard.addKey(Phaser.Keyboard.I);             
+        this.iKey = game.input.keyboard.addKey(Phaser.Keyboard.I);  
+        this.pKey = game.input.keyboard.addKey(Phaser.Keyboard.P);           
     
         //Camera
         game.camera.follow(player);
@@ -121,7 +128,7 @@ NoName.levelState.prototype = {
         //PLAYER KEYS
         if(this.wKey.isDown){
             if(ygame > 320){
-                player.y -= speed;
+                player.y -= yspeed;
                 size -= 0.0007;
                 player.scale.setTo(size, size);
                 ygame -= 3;
@@ -129,7 +136,7 @@ NoName.levelState.prototype = {
         }
         if(this.sKey.isDown){
             if(ygame < 553){
-                player.y += speed;
+                player.y += yspeed;
                 size += 0.0007;
                 player.scale.setTo(size, size);
                 ygame += 3;
@@ -154,7 +161,7 @@ NoName.levelState.prototype = {
         //RIVAL KEYS
         if(this.wRKey.isDown){
             if(ygameR > 320){
-                rival.y -= speed;
+                rival.y -= yspeedR;
                 sizeR -= 0.0007;
                 rival.scale.setTo(sizeR, sizeR);
                 ygameR -= 3;
@@ -162,14 +169,14 @@ NoName.levelState.prototype = {
         }
         if(this.sRKey.isDown){
             if(ygameR < 553){
-                rival.y += speed;
+                rival.y += yspeedR;
                 sizeR += 0.0007;
                 rival.scale.setTo(sizeR, sizeR);
                 ygameR += 3;
             }
         }
         if(this.dRKey.isDown){
-            rival.x += speedR;
+            rival.x += xspeedR;
         }
     
         //Collisions
@@ -183,7 +190,7 @@ NoName.levelState.prototype = {
 
         //LIGHTS OUT
         if(this.oKey.isDown){
-            if(lcont == 0){
+            if(lcont == 0 && haslight){
                 droptrap();
                 lcont++;
             }
@@ -195,7 +202,7 @@ NoName.levelState.prototype = {
         
         //BOMB
         if(this.iKey.isDown){
-            if(bcont == 0){
+            if(bcont == 0 && hasbomb){
                 bombpow();
                 bcont++;
             }
@@ -204,6 +211,14 @@ NoName.levelState.prototype = {
         if(game.time.now == bombatime + 3000){
             xspeed = 3;
         }
+
+        /*//JUMP
+        if(this.pKey.isDown){
+            if(jcont == 0  && hasjump){
+                jumppow();
+                jcont++;
+            }
+        }*/
     }
 }
     
@@ -229,7 +244,7 @@ function makevisible(sprite){
     
 //Ends rival speed buff function
 function speedy(){
-    speedR = 3;
+    xspeedR = 3;
 }
 
 //Use bomb power-up
@@ -239,10 +254,25 @@ function bombpow(){
     bombatime = game.time.now;
 }
     
-//Use jump power-up
+/*//Use jump power-up
+POR ARREGLAR
 function jumppow(){
     salto.pendingDestroy = true;
-}
+    jumppos = player.y;
+    jumptime = game.time.now;
+    do{
+        player.y += 0.01;
+        jsize = jsize + 0.0007;
+        player.scale.setTo(jsize, jsize);
+        console.log('ff');
+    }while(player.y < jumppos + 12)
+    do{
+        player.y -= 0.01;
+        jsize = jsize - 0.0007;
+        player.scale.setTo(jsize, jsize);
+        console.log('gg');
+    }while(player.y !== jumppos)
+}*/
     
 //Use lightsout trap
 function lighttrap(){
@@ -250,7 +280,7 @@ function lighttrap(){
     pantallazo = game.add.sprite(0, 0, 'blackscreen');
     lucestime = game.time.now;
 }
-
+//Drops lightsout trap
 function droptrap(){
     luces.pendingDestroy = true;
     xtrap = player.x;
