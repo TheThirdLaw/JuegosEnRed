@@ -22,6 +22,8 @@ var spcont = 5;
 var sptimer;
     
 var bomba;
+var bcont = 0;
+var bombatime;
 
 var luces;
 var pantallazo;
@@ -68,7 +70,10 @@ NoName.levelState.prototype = {
         rival = game.add.sprite(xgameR, ygameR, 'example_enem');
         rival.scale.setTo(sizeR, sizeR);
         game.physics.enable(rival, Phaser.Physics.ARCADE);
-        this.oKey = game.input.keyboard.addKey(Phaser.Keyboard.O);            
+
+        //POWER-UPS && TRAPS
+        this.oKey = game.input.keyboard.addKey(Phaser.Keyboard.O);
+        this.iKey = game.input.keyboard.addKey(Phaser.Keyboard.I);             
     
         //Camera
         game.camera.follow(player);
@@ -80,7 +85,7 @@ NoName.levelState.prototype = {
             generateHerbs(i);
         }
     
-        //Tex catch or run
+        //Text catch or run
         job = game.add.text(20, 20, "", {
             font: "35px Arial",
             fill: "#ff0044",
@@ -92,7 +97,7 @@ NoName.levelState.prototype = {
     
         //Power-ups and traps
         if(hasbomb){
-            bomba = game.add.button(540, 20, 'bomb', bombpow, this);
+            bomba = game.add.sprite(540, 20, 'bomb');
             bomba.scale.setTo(0.535, 0.535);
         }
         if(hasjump){
@@ -132,18 +137,18 @@ NoName.levelState.prototype = {
         }
         if(this.dKey.isDown){
             if(player.x >= 400){
-                job.x += speed;
+                job.x += xspeed;
                 if(hasbomb){
-                    bomba.x += speed;
+                    bomba.x += xspeed;
                 }
                 if(haslight){
-                    luces.x += speed;
+                    luces.x += xspeed;
                 }
                 if(hasjump){
-                    salto.x += speed;
+                    salto.x += xspeed;
                 }
             }
-            player.x += speed;
+            player.x += xspeed;
         }
     
         //RIVAL KEYS
@@ -183,10 +188,21 @@ NoName.levelState.prototype = {
                 lcont++;
             }
         }
-    
         //Destroys lightsout
         if(game.time.now == lucestime + 3000){
             pantallazo.destroy();
+        }
+        
+        //BOMB
+        if(this.iKey.isDown){
+            if(bcont == 0){
+                bombpow();
+                bcont++;
+            }
+        }
+        //Destroy bomb
+        if(game.time.now == bombatime + 3000){
+            xspeed = 3;
         }
     }
 }
@@ -201,7 +217,7 @@ function nowinner(){
     game.state.start('tieState');
 }
     
-//Hide behind rock function
+/*//Hide behind rock function
 function makeinvisible(sprite){
     sprite.visible = false;
 }
@@ -209,9 +225,9 @@ function makeinvisible(sprite){
 //Get out of behind the rock function
 function makevisible(sprite){
     sprite.visible = true;
-}
+}*/
     
-//Ens the rival speed buff function
+//Ends rival speed buff function
 function speedy(){
     speedR = 3;
 }
@@ -219,6 +235,8 @@ function speedy(){
 //Use bomb power-up
 function bombpow(){
     bomba.pendingDestroy = true;
+    xspeed = 5;
+    bombatime = game.time.now;
 }
     
 //Use jump power-up
