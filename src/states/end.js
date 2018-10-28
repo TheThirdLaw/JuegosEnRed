@@ -39,6 +39,6 @@ NoName.endState.prototype = {
     }
 }
 
-    function backtomenu(){
-        game.state.start('menuState');
-    }
+function backtomenu(){
+    game.state.start('menuState');
+}

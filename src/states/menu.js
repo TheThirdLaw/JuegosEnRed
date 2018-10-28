@@ -26,9 +26,9 @@ function playButton() {
 }
 
 function shopButton() {
-
+    game.state.start('shopState');    
 }
 
 function settingsButton() {
-
+    game.state.start('configState');    
 }
