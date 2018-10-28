@@ -32,6 +32,13 @@ NoName.levelState.prototype = {
 
     create: function() {
 
+        //Generamos mundo
+        var loops = 16000/800;
+        for (var i = 0; i<loops; i++){
+            generateRocks(i);
+            generateHerbs(i);
+        }
+
         game.add.tileSprite(0, 0, 16000, 600, 'background');
         game.world.setBounds(0, 0, 16000, 600);
 
@@ -116,7 +123,7 @@ NoName.levelState.prototype = {
         if(this.dKey.isDown){
             if(player.x >= 400){
                 job.x += speed;
-                bomba.x += speed;
+                //bomba.x += speed;
                 luces.x += speed;
                 salto.x += speed;
             }
@@ -181,4 +188,104 @@ function makevisible(sprite){
 //Ens the rival speed buff function
 function speedy(){
     speedR = 3;
+}
+
+function generateRocks(i){
+    if(Math.random() >= 0.5){
+        var randX = Math.floor(Math.random() * 401);
+        var randY = Math.floor(Math.random() * 141) + 140;
+        game.add.sprite((800*i + randX), (600 - randY), selectRock());
+    }
+    if(Math.random() >= 0.5){
+        var randX = Math.floor(Math.random() * 401) + 400;
+        var randY = Math.floor(Math.random() * 141) + 140;
+        game.add.sprite((800*i + randX), (600 - randY), selectRock());
+    }
+    if(Math.random() >= 0.5){
+        var randX = Math.floor(Math.random() * 401);
+        var randY = Math.floor(Math.random() * 141);
+        game.add.sprite((800*i + randX), (600 - randY), selectRock());
+    }
+    if(Math.random() >= 0.5){
+        var randX = Math.floor(Math.random() * 401) + 400;
+        var randY = Math.floor(Math.random() * 141);
+        game.add.sprite((800*i + randX), (600 - randY), selectRock());
+    }
+}
+
+function generateHerbs(i){
+    var rand = Math.floor(Math.random() * 7);
+    for(var j = 0; j < rand; j++){
+        var randX = Math.floor(Math.random() * 801);
+        var randY = Math.floor(Math.random() * 281);
+        game.add.sprite((800*i + randX), (600 - randY), selectHerb());
+    }
+}
+
+function selectHerb(){
+    var random = Math.floor(Math.random() * 14) + 1;
+    switch(random){
+        case 1:
+            return "Hi1";
+        case 2:
+            return "Hi2";
+        case 3:
+            return "Hi3";
+        case 4:
+            return "Hi4";
+        case 5:
+            return "Hi5";
+        case 6:
+            return "Hi6";
+        case 7:
+            return "Hi7";
+        case 8:
+            return "Hi8";
+        case 9:
+            return "Hi9";
+        case 10:
+            return "Hi10";
+        case 11:
+            return "Hi11";
+        case 12:
+            return "Hi12";
+        case 13:
+            return "Hi13";
+        case 14:
+            return "Hi14";
+    }
+}
+
+function selectRock(){
+    var random = Math.floor(Math.random() * 14) + 1;
+    switch(random){
+        case 1:
+            return "Pi1";
+        case 2:
+            return "Pi2";
+        case 3:
+            return "Pi3";
+        case 4:
+            return "Pi4";
+        case 5:
+            return "Pi5";
+        case 6:
+            return "Pi6";
+        case 7:
+            return "Pi7";
+        case 8:
+            return "Pi8";
+        case 9:
+            return "Pi9";
+        case 10:
+            return "Pi10";
+        case 11:
+            return "Pi11";
+        case 12:
+            return "Pi12";
+        case 13:
+            return "Pi13";
+        case 14:
+            return "Pi14";
+    }
 }
