@@ -13,6 +13,7 @@ NoName.endState.prototype = {
     create: function(){
         game.world.setBounds(0, 0, 800, 600);
 
+        //Wins
         if(player.x < rival.x){
             info = game.add.text(game.world.centerX-230, game.world.centerY-200, "¡Has ganado!", {
                 font: "65px Arial",
@@ -20,6 +21,7 @@ NoName.endState.prototype = {
                 align: "center"
             });
         }
+        //Loses
         else if(rival.x < player.x){
             info = game.add.text(game.world.centerX-230, game.world.centerY-200, "Has perdido...", {
                 font: "65px Arial",
@@ -28,7 +30,7 @@ NoName.endState.prototype = {
             });
         }
 
-        
+        //Menu button
         game.add.button(game.world.centerX-150, game.world.centerY+50, 'menu', backtomenu, this, 1, 0, 2);
     },
 

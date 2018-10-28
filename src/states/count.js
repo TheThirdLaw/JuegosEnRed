@@ -18,6 +18,7 @@ NoName.countState.prototype = {
             align: "center"
         });
 
+        //Timer
         game.time.events.loop(Phaser.Timer.SECOND, countdown, this);
     },
 
@@ -25,6 +26,7 @@ NoName.countState.prototype = {
     }
 }
 
+//Countdown to 3
 function countdown(){
     if(cont > 1){
         cont--;

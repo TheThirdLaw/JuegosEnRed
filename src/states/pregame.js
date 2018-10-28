@@ -6,6 +6,10 @@ var bombrsz;
 var LOrsz;
 var jumprsz;
 
+var hasbomb;
+var hasjump;
+var haslight;
+
 NoName.pregameState.prototype = {
 
     preload: function(){
@@ -44,11 +48,13 @@ function flechaI() {
 function bomb() {
     bombrsz = game.add.button(283, 352, 'bomb', outSprite1, this);
     bombrsz.scale.setTo(0.535);
+    hasbomb = true;
 }
 
 function lightsOut() {
     LOrsz = game.add.button(365, 353, 'lightsout', outSprite2, this);
     LOrsz.scale.setTo(0.535);
+    haslight = true;
 }
 
 function morderbloq() {
@@ -58,6 +64,7 @@ function morderbloq() {
 function salto() {
     jumprsz = game.add.button(447, 352, 'salto', outSprite3, this);
     jumprsz.scale.setTo(0.535);
+    hasjump = true;
 }
 
 function outSprite1() {
