@@ -8,6 +8,7 @@ var xgame;
 var ygame;
 var size;
 var speed = 3;
+var xspeed = 3;
 
 var rival;
 var xgameR;
@@ -22,6 +23,8 @@ var sptimer;
 
 var bomba;
 var luces;
+var pantallazo;
+var lucestime;
 var salto;
 
 NoName.levelState.prototype = {
@@ -82,15 +85,15 @@ NoName.levelState.prototype = {
 
         //Power-ups and traps
         if(hasbomb){
-            bomba = game.add.sprite(540, 20, 'bomb');
+            bomba = game.add.button(540, 20, 'bomb', bombpow, this);
             bomba.scale.setTo(0.535, 0.535);
         }
         if(hasjump){
-            salto = game.add.sprite(700, 20, 'salto');
+            salto = game.add.button(700, 20, 'salto', jumppow, this);
             salto.scale.setTo(0.535, 0.535);
         }
         if(haslight){
-            luces = game.add.sprite(620, 20, 'lightsout');
+            luces = game.add.button(620, 20, 'lightsout', lighttrap, this);
             luces.scale.setTo(0.535, 0.535);
         }
     },
@@ -123,9 +126,21 @@ NoName.levelState.prototype = {
         if(this.dKey.isDown){
             if(player.x >= 400){
                 job.x += speed;
+<<<<<<< HEAD
+                if(hasbomb){
+                    bomba.x += speed;
+                }
+                if(haslight){
+                    luces.x += speed;
+                }
+                if(hasjump){
+                    salto.x += speed;
+                }
+=======
                 bomba.x += speed;
                 luces.x += speed;
                 salto.x += speed;
+>>>>>>> origin/Dev
             }
             player.x += speed;
         }
@@ -162,6 +177,11 @@ NoName.levelState.prototype = {
         if(player.x >= 16000 || rival.x >= 16000){
             nowinner();
         }
+
+        //Destroys lightsout
+        if(game.time.now == lucestime + 3000){
+            pantallazo.destroy();
+        }
     }
 }
 
@@ -188,6 +208,23 @@ function makevisible(sprite){
 //Ens the rival speed buff function
 function speedy(){
     speedR = 3;
+}
+
+//Use bomb power-up
+function bombpow(){
+    bomba.pendingDestroy = true;
+}
+
+//Use jump power-up
+function jumppow(){
+    salto.pendingDestroy = true;
+}
+
+//Use lightsout trap
+function lighttrap(){
+    pantallazo = game.add.sprite(0, 0, 'blackscreen');
+    luces.pendingDestroy = true;
+    lucestime = game.time.now;
 }
 
 function generateRocks(i){

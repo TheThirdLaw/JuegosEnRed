@@ -12,6 +12,7 @@ NoName.preloadState.prototype = {
         game.load.spritesheet('play', 'assets/botones 2.0/rsz_bplay.png', 249, 149);
         game.load.spritesheet('shop', 'assets/botones 2.0/rsz_bshop.png', 143, 99);
         game.load.image('title', 'assets/menu/rsz_Title.png');
+        game.load.image('blackscreen', 'assets/images/blackscreen.png');
 
         game.load.spritesheet('playpregame', 'assets/botones 2.0/rsz_bplaypregame.png', 160, 96);
         game.load.image('bomb', 'assets/botones 2.0/rsz_bbomba.png');
