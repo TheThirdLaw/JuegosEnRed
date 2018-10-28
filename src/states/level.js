@@ -22,9 +22,15 @@ var spcont = 5;
 var sptimer;
 
 var bomba;
+
 var luces;
 var pantallazo;
 var lucestime;
+var lcont = 0;
+var trap;
+var xtrap;
+var ytrap;
+
 var salto;
 
 NoName.levelState.prototype = {
@@ -70,6 +76,8 @@ NoName.levelState.prototype = {
         rival.scale.setTo(sizeR, sizeR);
         game.physics.enable(rival, Phaser.Physics.ARCADE);
 
+        this.oKey = game.input.keyboard.addKey(Phaser.Keyboard.O);
+
         //Camera
         game.camera.follow(player);
 
@@ -89,11 +97,11 @@ NoName.levelState.prototype = {
             bomba.scale.setTo(0.535, 0.535);
         }
         if(hasjump){
-            salto = game.add.button(700, 20, 'salto', jumppow, this);
+            salto = game.add.sprite(700, 20, 'salto');
             salto.scale.setTo(0.535, 0.535);
         }
         if(haslight){
-            luces = game.add.button(620, 20, 'lightsout', lighttrap, this);
+            luces = game.add.sprite(620, 20, 'lightsout');
             luces.scale.setTo(0.535, 0.535);
         }
     },
@@ -166,10 +174,19 @@ NoName.levelState.prototype = {
         game.physics.arcade.collide(rival, roca, makeinvisible(rival));
         !game.physics.arcade.collide(player, roca, makevisible(player));
         !game.physics.arcade.collide(rival, roca, makevisible(rival));
+        game.physics.arcade.collide(trap, rival, lighttrap);
 
         //Tie
         if(player.x >= 16000 || rival.x >= 16000){
             nowinner();
+        }
+
+        //LIGHTS OUT
+        if(this.oKey.isDown){
+            if(lcont == 0){
+                droptrap();
+                lcont++;
+            }
         }
 
         //Destroys lightsout
@@ -216,9 +233,18 @@ function jumppow(){
 
 //Use lightsout trap
 function lighttrap(){
+    trap.destroy();
     pantallazo = game.add.sprite(0, 0, 'blackscreen');
-    luces.pendingDestroy = true;
     lucestime = game.time.now;
+}
+
+function droptrap(){
+    luces.pendingDestroy = true;
+    xtrap = player.x;
+    ytrap = player.y;
+    trap = game.add.sprite(xtrap, ytrap, 'trap');
+    trap.scale.setTo(size, size);
+    game.physics.enable(trap, Phaser.Physics.ARCADE);
 }
 
 function generateRocks(i){

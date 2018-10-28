@@ -26,6 +26,7 @@ NoName.preloadState.prototype = {
 
         game.load.image('example_char', 'assets/personajes 2.0/P1aA.png');
         game.load.image('example_enem', 'assets/personajes 2.0/P1nA.png');
+        game.load.image('trap', 'assets/personajes 2.0/P1vA.png');
 
         //Piedras
         game.load.image('Pi1', 'assets/scenarios/piedras/Pi1.png');
