@@ -13,7 +13,7 @@ NoName.tieState.prototype = {
     create: function(){
         game.world.setBounds(0, 0, 800, 600);
 
-            tie = game.add.text(game.world.centerX-230, game.world.centerY-200, "Ha habido un empate", {
+            tie = game.add.text(game.world.centerX-300, game.world.centerY-200, "Ha habido un empate", {
                 font: "65px Arial",
                 fill: "#ff0044",
                 align: "center"

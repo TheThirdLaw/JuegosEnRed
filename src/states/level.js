@@ -93,6 +93,9 @@ NoName.levelState.prototype = {
             }
         }
         if(this.dKey.isDown){
+            if(player.x >= 400){
+                job.x += 3;
+            }
             player.x += 3;
         }
 
