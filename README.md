@@ -87,20 +87,30 @@ Estas recompensas dependen del nivel del rival (también pueden ser penalizacion
 ## **ESTADOS DEL JUEGO**
 
 -Carga: Carga todos los assets.
+<br>
 ![Cargando](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PCargando.PNG)
-
+<br>
+<br>
 -Menú principal: con opciones de iniciar partida, acceder a la tienda, a los créditos y a la configuración.
+<br>
 ![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PInicio.PNG)
-
+<br>
+<br>
 -Pregame Lobby: Pantalla donde eliges tus power-ups y trampas, y te preparas para el juego.
+<br>
 ![Pregame](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PElegirCartas.PNG)
-
+<br>
+<br>
 -Level: El juego en sí.
+<br>
 ![Level](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PLevel.png)
-
+<br>
+<br>
 Aparte hay otros estados menores, como la cuenta atrás, configuración, o tienda. Están todas detalladas en este diagrama:
+<br>
 ![Level](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/DiagramaV2.png)
 
+<br>
 <br>
 
 ## **INTERFACES**
