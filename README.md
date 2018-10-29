@@ -39,10 +39,10 @@ Categoría: juego de plataformas, competitivo
 Público: todos los públicos
 
 
-![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/StartMenu.jpg)
+![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PInicio.jpg)
 
 
-El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para despistar a su rival, y colocarse tras él, donde los papeles se invierten y el perseguidor pasa a ser perseguido. El juego cuenta con un sistema de trampas (visuales y que además, restan puntuación) para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel.
+El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para despistar a su rival, y colocarse tras él, donde los papeles se invierten y el perseguidor pasa a ser perseguido. El juego cuenta con un sistema de trampas para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel.
 
 <br>
 
@@ -50,7 +50,7 @@ El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugador
 
 Desarrollo del GDD, creación del juego, Fase 1 - INICIO: 19/09/2018; FIN: 26/09/2018
 
-Creación del juego, versión alpha offline, Fase 2 - INICIO: 26/09/2018; FIN:
+Creación del juego, versión alpha offline, Fase 2 - INICIO: 26/09/2018; FIN: 28/10/2018
 
 <br>
 
@@ -66,17 +66,16 @@ Al inicio del juego, se determina de manera semi-aleatoria, con un matchmaking q
 Al ser un juego de plataformas los controles son sencillos, flechas hacia la derecha e izquierda para avanzar en el escenario, y las de arriba y abajo para conseguir esconderse, como en tercera dimensión, pero de manera plana.
 
 ### Flujo de juego:
-Tras determinar quién inicia como perseguidor, y quién como perseguido, se inicia el juego. El perseguido tiene X segundos en los que es más rápido que su rival para poner trampas, esconderse, etc. Cuando esos X segundos terminan, el perseguidor puede empezar a usar power-ups y empieza a ser más rápido que el perseguido, por lo que este último debe esconderse o será cazado sin remedio, y el perseguidor recibirá un bonus de oro. En el momento en el que el perseguidor se pasa de largo, se invierten posiciones (aparece en plantalla un mensaje de "HUYE" o "CAZA"). Si se agota Y tiempo sin ser descubierto o sin que el perseguidor sobrepase al perseguido, el perseguido gana la partida y el bonus de oro -menor que por cazar- se lo lleva el perseguido. Las partidas durarán como máximo Z minutos.
+Tras determinar quién inicia como perseguidor, y quién como perseguido, se inicia el juego. El perseguido tiene X segundos en los que es más rápido que su rival para poner trampas, esconderse, etc. Cuando esos X segundos terminan, el perseguidor puede empezar a usar power-ups y empieza a ser más rápido que el perseguido, por lo que este último debe esconderse o será cazado sin remedio, y el perseguidor ganará. En el momento en el que el perseguidor se pasa de largo, se invierten posiciones (aparece en plantalla un mensaje de "HUYE" o "CAZA"). Si se acaba el escenario, hay un empate y se puede (o no) volver a jugar.
 
 ### Cámara: 
 Utilizamos una perspectiva 2D lateral, y la cámara avanzará conforme avance (o retroceda) el jugador.
 
 ### Controles: 
 Como ya mencionamos antes, los controles principales se basan en las flechas:<br><br>
--Flechas derecha e izquierda: avanzar/retroceder<br><br>
+-Flecha derecha: avanzar<br><br>
 -Flechas arriba y abajo: esconderse<br><br>
--Tecla “P”: menú de pausa (reanudar, menú principal, salir)<br><br>
--Tecla “I”: colocar destellos, manteniéndola presionada y usando las flechas se puede determinar qué tipo de objeto queremos usar.
+-Teclaa "I", "O" y “P”: Trampas y power-ups<br><br>
 
 ### Puntuación: 
 En el juego existe un sistema de niveles y además uno monetario. Al ganar (o perder) la partida obtienes beneficios que te permiten subir de nivel, conseguir apariencias distintas (siempre buscando que sea más sencillo esconderse, camuflarse) y comprar trampas para despistar y debilitar al rival.
@@ -86,10 +85,21 @@ Estas recompensas dependen del nivel del rival (también pueden ser penalizacion
 <br>
 
 ## **ESTADOS DEL JUEGO**
- 
--Menú principal: con opciones de iniciar partida, acceder a la tienda, a los créditos y a la configuración de sonido. 
 
--Tiempo de juego: con opciones de avanzar, esconderse, colocar trampas o abandonar la partida, lo que nos llevará al menú principal.
+-Carga: Carga todos los assets.
+![Cargando](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PCargamdo.jpg)
+
+-Menú principal: con opciones de iniciar partida, acceder a la tienda, a los créditos y a la configuración.
+![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PInicio.jpg)
+
+-Pregame Lobby: Pantalla donde eliges tus power-ups y trampas, y te preparas para el juego.
+![Pregame](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PElegirCartas.jpg)
+
+-Level: El juego en sí.
+![Level](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PLevel.jpg)
+
+Aparte hay otros estados menores, como la cuenta atrás, configuración, o tienda. Están todas detalladas en este diagrama:
+![Level](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/DiagramaV2.jpg)
 
 <br>
 
@@ -108,7 +118,7 @@ Dentro de lo que es el tiempo de juego, el escenario y la música se mantienen m
 De manera externa, el nivel individual de cada jugador, y su oro, depende de la puntuación de cada partida. Conforme se avanza de nivel podemos acceder a camuflajes y trampas más avanzados.
 
 
-![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/In-game-v2.png)
+![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PLevel.png)
 
 <br>
 
