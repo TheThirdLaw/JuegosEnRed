@@ -39,7 +39,7 @@ Categoría: juego de plataformas, competitivo
 Público: todos los públicos
 
 
-![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PInicio.jpg)
+![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PInicio.png)
 
 
 El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para despistar a su rival, y colocarse tras él, donde los papeles se invierten y el perseguidor pasa a ser perseguido. El juego cuenta con un sistema de trampas para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel.
@@ -87,19 +87,19 @@ Estas recompensas dependen del nivel del rival (también pueden ser penalizacion
 ## **ESTADOS DEL JUEGO**
 
 -Carga: Carga todos los assets.
-![Cargando](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PCargamdo.jpg)
+![Cargando](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PCargamdo.png)
 
 -Menú principal: con opciones de iniciar partida, acceder a la tienda, a los créditos y a la configuración.
-![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PInicio.jpg)
+![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PInicio.png)
 
 -Pregame Lobby: Pantalla donde eliges tus power-ups y trampas, y te preparas para el juego.
-![Pregame](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PElegirCartas.jpg)
+![Pregame](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PElegirCartas.png)
 
 -Level: El juego en sí.
-![Level](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PLevel.jpg)
+![Level](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PLevel.png)
 
 Aparte hay otros estados menores, como la cuenta atrás, configuración, o tienda. Están todas detalladas en este diagrama:
-![Level](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/DiagramaV2.jpg)
+![Level](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/DiagramaV2.png)
 
 <br>
 
