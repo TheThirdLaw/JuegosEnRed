@@ -19,13 +19,13 @@ NoName.pregameState.prototype = {
     create: function(){
         game.add.tileSprite(0, 0, 800, 600, 'background');
         game.add.tileSprite(13, 20, 774, 460, 'interfacecartas');
-        game.add.button(710, 165, 'flechad', flechaD, this, 1, 0, 2);
-        game.add.button(45, 165, 'flechai', flechaI, this, 1, 0, 2);
-        game.add.button(100, 159, 'bomb', bomb, this, 1, 0, 2);
-        game.add.button(256, 160, 'lightsout', lightsOut, this, 1, 0, 2);
-        game.add.button(412, 159, 'morderbloq', morderbloq, this, 1, 0, 2);
-        game.add.button(568, 159, 'salto', salto, this, 1, 0, 2);
-        game.add.button(320, 483, 'playpregame', playPregame, this, 1, 0, 2);
+        game.add.button(710, 165, 'flechad', flechaD, this);
+        game.add.button(45, 165, 'flechai', flechaI, this);
+        game.add.button(100, 159, 'bomb', bomb, this);
+        game.add.button(256, 160, 'lightsout', lightsOut, this);
+        game.add.button(412, 159, 'morderbloq', morderbloq, this);
+        game.add.button(568, 159, 'salto', salto, this);
+        game.add.button(320, 483, 'playpregame', playPregame, this);
     },
 
     update: function(){
@@ -69,12 +69,15 @@ function salto() {
 
 function outSprite1() {
     bombrsz.pendingDestroy = true;
+    hasbomb = false;
 }
 
 function outSprite2() {
     LOrsz.pendingDestroy = true;
+    haslight = false;
 }
 
 function outSprite3() {
     jumprsz.pendingDestroy = true;
+    hasjump = false;
 }
