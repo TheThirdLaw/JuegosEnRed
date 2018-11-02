@@ -18,19 +18,16 @@ var xspeedR = 4;
 
 //Declaración del texto que indica si huyes o persigues
 var job;
-job.fixedToCamera = true;
 
 //Timer para el buff de velocidad del rival
 var sptimer;
    
 //Se crea el icono de la bomba y una variable para determinar la duración del power-up
 var bomba;
-bomba.fixedToCamera = true;
 var bombatime;
 
 //Se crea el icono de la luz y aparece la trampa por pantalla
 var luces;
-luces.fixedToCamera = true;
 var trap;
 
 //Pantallazo es la activación de la trampa y lucestime determina la duración
@@ -39,7 +36,6 @@ var lucestime;
 
 //Se crea el icono del salto       
 var salto;
-salto.fixedToCamera = true;
 
 /*var jumppos;
 var jsize = size;*/
@@ -93,6 +89,7 @@ NoName.levelState.prototype = {
             fill: "#ff0044",
             align: "center"
         });
+        job.fixedToCamera = true;
     
         //Buff de velocidad que inicialmente tiene el rival
         //Durante 4 segundos el rival tiene velocidad 4, a partir de entonces, se llama a speedy y esta función cambia la velocidad
@@ -102,14 +99,17 @@ NoName.levelState.prototype = {
         if(hasbomb){
             bomba = game.add.sprite(540, 20, 'bomb');
             bomba.scale.setTo(0.535, 0.535);
+            bomba.fixedToCamera = true;
         }
         if(hasjump){
             salto = game.add.sprite(700, 20, 'salto');
             salto.scale.setTo(0.535, 0.535);
+            salto.fixedToCamera = true;
         }
         if(haslight){
             luces = game.add.sprite(620, 20, 'lightsout');
             luces.scale.setTo(0.535, 0.535);
+            luces.fixedToCamera = true;
         }
     },
     
