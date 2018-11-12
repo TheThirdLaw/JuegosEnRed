@@ -10,6 +10,8 @@ var hasbomb;
 var hasjump;
 var haslight;
 
+var time;
+
 NoName.pregameState.prototype = {
 
     preload: function(){
@@ -26,15 +28,18 @@ NoName.pregameState.prototype = {
         game.add.button(412, 159, 'morderbloq', morderbloq, this);
         game.add.button(568, 159, 'salto', salto, this);
         game.add.button(320, 483, 'playpregame', playPregame, this);
+        time = game.time.events.add(Phaser.Timer.SECOND * 15, playPregame, this);
+
     },
 
     update: function(){
-        setTimeout(playPregame, 30000);
+
     }
 }
 
 function playPregame() {
-    game.state.start('countState');
+    game.time.events.remove(time);
+    game.state.start('levelState');
 }
 
 function flechaD() {
