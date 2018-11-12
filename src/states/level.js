@@ -36,9 +36,6 @@ var lucestime;
 
 //Se crea el icono del salto       
 var salto;
-
-/*var jumppos;
-var jsize = size;*/
     
 NoName.levelState.prototype = {
         
@@ -198,13 +195,13 @@ NoName.levelState.prototype = {
             xspeed = 3;
         }
 
-        /*//JUMP
+        //
         if(this.pKey.isDown){
             if(hasjump){
                 jumppow();
                 hasjump = false;
             }
-        }*/
+        }
     }
 }
     
@@ -240,24 +237,11 @@ function bombpow(){
     bombatime = game.time.now;
 }
     
-/*//Use jump power-up
-POR ARREGLAR
+//Se usa el poder del teletransporte
 function jumppow(){
     salto.pendingDestroy = true;
-    jumppos = player.y;
-    do{
-        player.y += 0.01;
-        jsize = jsize + 0.0007;
-        player.scale.setTo(jsize, jsize);
-        console.log('ff');
-    }while(player.y < jumppos + 12)
-    do{
-        player.y -= 0.01;
-        jsize = jsize - 0.0007;
-        player.scale.setTo(jsize, jsize);
-        console.log('gg');
-    }while(player.y !== jumppos)
-}*/
+    player.x = rival.x + 100;
+}
     
 //Se destruye la trampa y la pantalla se pone en negro
 function lighttrap(){
