@@ -1,0 +1,4 @@
+ATituloAbajo,0,0,1095,495
+ATituloMedio0,0,496,1095,495
+ATituloArriba,0,992,1095,495
+ATituloMedio1,0,1488,1095,495
