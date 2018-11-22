@@ -37,7 +37,7 @@ public class GameController {
 		Player player = new Player();
 		long id = nextId.incrementAndGet();
 		player.setId(id);
-		if(getPlayers() == null) {
+		if(id == 1) {
 			player.setX(10);
 			player.setPlace(1);
 		}else {

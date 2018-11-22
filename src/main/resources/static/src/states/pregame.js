@@ -39,7 +39,7 @@ NoName.pregameState.prototype = {
 
 function playPregame() {
     game.time.events.remove(time);
-    game.state.start('levelState');
+    game.state.start('matchState');
 }
 
 function flechaD() {
