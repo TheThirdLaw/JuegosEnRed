@@ -38,6 +38,14 @@ var lucestime;
 var salto;
     
 NoName.levelState.prototype = {
+
+    init() {
+		if (game.player1.id == 1) {
+			game.player2 = {id: 2}
+		} else {
+			game.player2 = {id: 1}
+		}
+	},
         
     preload: function() {
         
@@ -47,20 +55,26 @@ NoName.levelState.prototype = {
         //Background
         game.add.tileSprite(0, 0, 16000, 600, 'background');
         game.world.setBounds(0, 0, 16000, 600);
+        
+        getPlayerSync(function (data) {
+        	if(game.player1.place == 1){
+            	player = game.add.sprite(game.player1.x, game.player1.y, 'example_char');
+            	rival = game.add.sprite(game.player2.x, game.player2.y, 'example_enem');
+            }else if(game.player1.setPlace == 2){
+            	player = game.add.sprite(game.player1.x, game.player1.y, 'example_enem');
+            	rival = game.add.sprite(game.player2.x, game.player2.y, 'example_char');
+            }
+        });
+        
     
         //Funciones básicas del jugador (teclas, aparición del sprite, escalado y físicas)
         this.wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
         this.sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
         this.dKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
-        player = game.add.sprite(xgame, ygame, 'example_char');
+        
         player.scale.setTo(size, size);
         game.physics.enable(player, Phaser.Physics.ARCADE);
     
-        //Funciones básicas del rival (teclas, aparición del sprite, escalado y físicas)
-        this.wRKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
-        this.sRKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
-        this.dRKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
-        rival = game.add.sprite(xgame + 90, ygameR, 'example_enem');
         rival.scale.setTo(sizeR, sizeR);
         game.physics.enable(rival, Phaser.Physics.ARCADE);
 
@@ -126,6 +140,7 @@ NoName.levelState.prototype = {
                 size -= 0.0007;
                 player.scale.setTo(size, size);
                 ygame -= 3;
+        
             }
         }
         if(this.sKey.isDown){
@@ -202,6 +217,10 @@ NoName.levelState.prototype = {
                 hasjump = false;
             }
         }
+
+        putPlayer();
+
+        getPlayer();
     }
 }
     
@@ -371,4 +390,49 @@ function selectRock(){
         case 14:
             return ["Pi14", 0.8];
     }
+}
+
+function putPlayer() {
+    game.player1.x = player.x;
+    game.player1.y = player.y;
+    $.ajax({
+        method: "PUT",
+        url: (window.location.href + '/game') + game.player1.id,
+        data: JSON.stringify(game.player1),
+        processData: false,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (data) {
+        console.log("Actualizada posicion de player 1: " + JSON.stringify(data))
+    })
+}
+
+function getPlayer(callback) {
+    $.ajax({
+        method: "GET",
+        url: (window.location.href + '/game') + game.player2.id,
+        processData: false,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (data) {
+        game.player2 = JSON.parse(JSON.stringify(data));
+        callback(data);
+    })
+}
+
+function getPlayerSync(callback) {
+    $.ajax({
+        method: "GET",
+        url: (window.location.href + '/game') + game.player2.id,
+        async: false,
+        processData: false,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (data) {
+        game.player2 = JSON.parse(JSON.stringify(data));
+        callback(data);
+    })
 }

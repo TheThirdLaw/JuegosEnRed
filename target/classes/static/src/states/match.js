@@ -46,6 +46,7 @@ NoName.matchState.prototype = {
     getNumPlayers: function (callback) {
         $.ajax({
             url: (window.location.href + '/game'),
+            async: false,
         }).done(function (data) {
             callback(data);
         })
