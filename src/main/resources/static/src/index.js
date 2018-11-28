@@ -7,10 +7,9 @@ game.state.add('shopState', NoName.shopState)
 game.state.add('configState', NoName.configState)
 game.state.add('pregameState', NoName.pregameState)
 game.state.add('matchState', NoName.matchState)
-game.state.add('matchState', NoName.matchState)
 game.state.add('countState', NoName.countState)
 game.state.add('levelState', NoName.levelState)
-game.state.add('tieState', NoName.tieState);
+game.state.add('tieState', NoName.tieState)
 game.state.add('endState', NoName.endState)
   
 game.state.start('bootState')

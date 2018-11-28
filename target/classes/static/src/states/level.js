@@ -48,7 +48,7 @@ NoName.levelState.prototype = {
 	},
         
     preload: function() {
-        
+    	console.log(JSON.stringify(game.player1))
     },
     
     create: function() {
@@ -56,7 +56,7 @@ NoName.levelState.prototype = {
         game.add.tileSprite(0, 0, 16000, 600, 'background');
         game.world.setBounds(0, 0, 16000, 600);
         
-        getPlayerSync(function (data) {
+        getPlayerSync(function(data) {
         	if(game.player1.place == 1){
             	player = game.add.sprite(game.player1.x, game.player1.y, 'example_char');
             	rival = game.add.sprite(game.player2.x, game.player2.y, 'example_enem');
@@ -223,7 +223,7 @@ NoName.levelState.prototype = {
         getPlayer();
     }
 }
-    
+
 //Si el jugador y el rival colisionan, se acaba la partida y se pasa a endState
 function  collision() {
     game.state.start('endState');
