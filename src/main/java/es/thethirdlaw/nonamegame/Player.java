@@ -5,6 +5,7 @@ public class Player {
 	private long id;
 	private int x, y;
 	private int place;
+	private boolean trap;
 	
 	Player() {}
 
@@ -38,5 +39,13 @@ public class Player {
 
 	public void setPlace(int place) {
 		this.place = place;
+	}
+	
+	public void setTrap(boolean trap) {
+		this.trap = trap;
+	}
+	
+	public boolean getTrap() {
+		return trap;
 	}
 }

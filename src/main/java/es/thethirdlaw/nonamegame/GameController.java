@@ -68,6 +68,7 @@ public class GameController {
 		if (savedPlayer != null) {
 			savedPlayer.setX(player.getX());
 			savedPlayer.setY(player.getY());
+			savedPlayer.setTrap(player.getTrap());
 			players.put(id, savedPlayer);
 			return new ResponseEntity<>(player, HttpStatus.OK);
 		} else {
@@ -90,6 +91,4 @@ public class GameController {
 	//Falta una función que cree el mundo
 	
 	//Falta una función que cree la trampa (json¿?)
-	
-	//Falta una función que indique si algún jugador ha llegado al final del mapa y, por tanto, se acaba la partida
 }

@@ -30,6 +30,7 @@ var bombatime;
 //Se crea el icono de la luz y aparece la trampa por pantalla
 var luces;
 var trap;
+var trap2 = null;
 
 //Pantallazo es la activación de la trampa y lucestime determina la duración
 var pantallazo;
@@ -159,7 +160,8 @@ NoName.levelState.prototype = {
     
         //Colisiones
         game.physics.arcade.collide(game.player, game.rival, collision);
-        game.physics.arcade.collide(trap, game.rival, lighttrap);            
+        game.physics.arcade.collide(trap, game.rival, lighttrap);
+        game.physics.arcade.collide(trap2, game.player, lighttrap2);
     
         //Si el jugador o el rival llegan al final del mapa, hay un empate
         if(game.player.x >= 16000 || game.rival.x >= 16000){
@@ -196,6 +198,12 @@ NoName.levelState.prototype = {
                 jumppow();
                 hasjump = false;
             }
+        }
+        
+        if(game.player2.trap == true && trap2 == null){
+        	trap2 = game.add.sprite(game.rival.x, game.rival.y, 'trap');
+            trap2.scale.setTo(sizeR, sizeR);
+            game.physics.enable(trap2, Phaser.Physics.ARCADE);
         }
 
         putPlayer();
@@ -249,12 +257,17 @@ function jumppow(){
 //Se destruye la trampa y la pantalla se pone en negro
 function lighttrap(){
     trap.destroy();        
+}
+
+function lighttrap2(){
+    trap2.destroy();        
     pantallazo = game.add.sprite(0, 0, 'blackscreen');
     lucestime = game.time.now;
 }
 //Suelta la trampa de luz, destruye el icono y genera el sprite de la trampa en el mismo lugar de donde estaba
 //el jugador. Se activan las físicas en la trampa
 function droptrap(){
+	game.player1.trap = true;
     luces.pendingDestroy = true;
     trap = game.add.sprite(game.player.x, game.player.y, 'trap');
     trap.scale.setTo(size, size);
@@ -389,6 +402,9 @@ function putPlayer() {
         }
     }).done(function (data) {
         console.log("Actualizada posicion de player 1: " + JSON.stringify(data))
+        if(game.player1.trap == true){
+        	game.player1.trap = false;
+        }
     })
 }
 
