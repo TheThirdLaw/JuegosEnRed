@@ -6,7 +6,7 @@ NoName.levelState = function(game) {
 var player;
 var xgame = 10;
 var ygame = 320;
-var size = 0.06 + (5.39*((y-320)/553));
+var size = 0.06;
 var yspeed = 3;
 var xspeed = 3;
 
@@ -14,7 +14,7 @@ var xspeed = 3;
 var rival;
 var ygameR = 320;
 var savedy;
-var sizeR = 0.06 + (5.39*((y-320)/553));
+var sizeR = 0.06;
 var xspeedR = 4;
 
 //Declaración del texto que indica si huyes o persigues
@@ -40,7 +40,7 @@ var salto;
     
 NoName.levelState.prototype = {
 
-    init() {
+    init: function() {
 		if (game.player1.id == 1) {
 			game.player2 = {id: 2}
 		} else {
@@ -66,8 +66,6 @@ NoName.levelState.prototype = {
             	game.rival = game.add.sprite(game.player2.x, game.player2.y, 'example_char');
             }
         });
-        
-        savedy = game.player2.y;
         
         //Funciones básicas del jugador (teclas, aparición del sprite, escalado y físicas)
         this.wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -133,6 +131,12 @@ NoName.levelState.prototype = {
         }else if(game.rival.x < game.player.x){
             job.setText('¡Huye!');
         }
+        
+        size = 0.06 + (0.15*((game.player.y-320)/555));
+        game.player.scale.setTo(size, size);
+        sizeR = 0.06 + (0.15*((game.rival.y-320)/555));
+        game.rival.scale.setTo(sizeR, sizeR);
+        
     
         //Teclas para el jugador, si está más cerca del límite inferior, se hace mayor el sprite, para dar sensación de profundidad
         //No se puede ir para la izquierda
@@ -144,7 +148,7 @@ NoName.levelState.prototype = {
             }
         }
         if(this.sKey.isDown){
-            if(ygame < 553){
+            if(ygame < 555){
                 game.player.y += yspeed;
                 ygame += 3;
             }
