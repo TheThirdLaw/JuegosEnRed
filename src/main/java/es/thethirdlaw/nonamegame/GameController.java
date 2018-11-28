@@ -66,9 +66,9 @@ public class GameController {
 	public ResponseEntity<Player> updatePlayer(@PathVariable long id, @RequestBody Player player) {
 		Player savedPlayer = players.get(player.getId());
 		if (savedPlayer != null) {
-			player.setX(savedPlayer.getX());
-			player.setY(savedPlayer.getY());
-			players.put(id, player);
+			savedPlayer.setX(player.getX());
+			savedPlayer.setY(player.getY());
+			players.put(id, savedPlayer);
 			return new ResponseEntity<>(player, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

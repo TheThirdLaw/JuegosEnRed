@@ -6,14 +6,15 @@ NoName.levelState = function(game) {
 var player;
 var xgame = 10;
 var ygame = 320;
-var size = 0.06;
+var size = 0.06 + (5.39*((y-320)/553));
 var yspeed = 3;
 var xspeed = 3;
 
 //Declaración de variables del rival
 var rival;
 var ygameR = 320;
-var sizeR = 0.06;
+var savedy;
+var sizeR = 0.06 + (5.39*((y-320)/553));
 var xspeedR = 4;
 
 //Declaración del texto que indica si huyes o persigues
@@ -58,25 +59,26 @@ NoName.levelState.prototype = {
         
         getPlayerSync(function(data) {
         	if(game.player1.place == 1){
-            	player = game.add.sprite(game.player1.x, game.player1.y, 'example_char');
-            	rival = game.add.sprite(game.player2.x, game.player2.y, 'example_enem');
-            }else if(game.player1.setPlace == 2){
-            	player = game.add.sprite(game.player1.x, game.player1.y, 'example_enem');
-            	rival = game.add.sprite(game.player2.x, game.player2.y, 'example_char');
+            	game.player = game.add.sprite(game.player1.x, game.player1.y, 'example_char');
+            	game.rival = game.add.sprite(game.player2.x, game.player2.y, 'example_enem');
+            }else if(game.player1.place == 2){
+            	game.player = game.add.sprite(game.player1.x, game.player1.y, 'example_enem');
+            	game.rival = game.add.sprite(game.player2.x, game.player2.y, 'example_char');
             }
         });
         
-    
+        savedy = game.player2.y;
+        
         //Funciones básicas del jugador (teclas, aparición del sprite, escalado y físicas)
         this.wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
         this.sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
         this.dKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
         
-        player.scale.setTo(size, size);
-        game.physics.enable(player, Phaser.Physics.ARCADE);
+        game.player.scale.setTo(size, size);
+        game.physics.enable(game.player, Phaser.Physics.ARCADE);
     
-        rival.scale.setTo(sizeR, sizeR);
-        game.physics.enable(rival, Phaser.Physics.ARCADE);
+        game.rival.scale.setTo(sizeR, sizeR);
+        game.physics.enable(game.rival, Phaser.Physics.ARCADE);
 
         //Teclas que activan las trampas
         this.oKey = game.input.keyboard.addKey(Phaser.Keyboard.O);
@@ -84,7 +86,7 @@ NoName.levelState.prototype = {
         this.pKey = game.input.keyboard.addKey(Phaser.Keyboard.P);           
     
         //Camara
-        game.camera.follow(player);
+        game.camera.follow(game.player);
     
         //Generación del mundo. Se divide el tamaño total del mundo entre el tamaño de la pantalla
         //Por cada uno de estos loops, se llama una vez a las funciones para generar las rocas y las hierbas
@@ -126,9 +128,9 @@ NoName.levelState.prototype = {
     
     update: function() {
         //Cambia el texto dependiendo de si está por delante o por detrás
-        if(player.x < rival.x){
+        if(game.player.x < game.rival.x){
             job.setText('¡Persíguelo!');
-        }else if(rival.x < player.x){
+        }else if(game.rival.x < game.player.x){
             job.setText('¡Huye!');
         }
     
@@ -136,53 +138,27 @@ NoName.levelState.prototype = {
         //No se puede ir para la izquierda
         if(this.wKey.isDown){
             if(ygame > 320){
-                player.y -= yspeed;
-                size -= 0.0007;
-                player.scale.setTo(size, size);
+                game.player.y -= yspeed;
                 ygame -= 3;
         
             }
         }
         if(this.sKey.isDown){
             if(ygame < 553){
-                player.y += yspeed;
-                size += 0.0007;
-                player.scale.setTo(size, size);
+                game.player.y += yspeed;
                 ygame += 3;
             }
         }
         if(this.dKey.isDown){
-            player.x += xspeed;
-        }
-    
-        //Teclas para el rival, si está más cerca del límite inferior, se hace mayor el sprite, para dar sensación de profundidad
-        //No se puede ir para la izquierda
-        if(this.wRKey.isDown){
-            if(ygameR > 320){
-                rival.y -= yspeed;
-                sizeR -= 0.0007;
-                rival.scale.setTo(sizeR, sizeR);
-                ygameR -= 3;
-            }
-        }
-        if(this.sRKey.isDown){
-            if(ygameR < 553){
-                rival.y += yspeed;
-                sizeR += 0.0007;
-                rival.scale.setTo(sizeR, sizeR);
-                ygameR += 3;
-            }
-        }
-        if(this.dRKey.isDown){
-            rival.x += xspeedR;
+            game.player.x += xspeed;
         }
     
         //Colisiones
-        game.physics.arcade.collide(player, rival, collision);
-        game.physics.arcade.collide(trap, rival, lighttrap);            
+        game.physics.arcade.collide(game.player, game.rival, collision);
+        game.physics.arcade.collide(trap, game.rival, lighttrap);            
     
         //Si el jugador o el rival llegan al final del mapa, hay un empate
-        if(player.x >= 16000 || rival.x >= 16000){
+        if(game.player.x >= 16000 || game.rival.x >= 16000){
             nowinner();
         }
 
@@ -220,7 +196,11 @@ NoName.levelState.prototype = {
 
         putPlayer();
 
-        getPlayer();
+        getPlayer(function(data){
+        	game.player2 = JSON.parse(JSON.stringify(data));
+        	game.rival.x = game.player2.x;
+        	game.rival.y = game.player2.y;
+        });
     }
 }
 
@@ -259,7 +239,7 @@ function bombpow(){
 //Se usa el poder del teletransporte
 function jumppow(){
     salto.pendingDestroy = true;
-    player.x = rival.x + 100;
+    game.player.x = game.rival.x + 100;
 }
     
 //Se destruye la trampa y la pantalla se pone en negro
@@ -272,7 +252,7 @@ function lighttrap(){
 //el jugador. Se activan las físicas en la trampa
 function droptrap(){
     luces.pendingDestroy = true;
-    trap = game.add.sprite(player.x, player.y, 'trap');
+    trap = game.add.sprite(game.player.x, game.player.y, 'trap');
     trap.scale.setTo(size, size);
     game.physics.enable(trap, Phaser.Physics.ARCADE);
 }    
@@ -393,11 +373,11 @@ function selectRock(){
 }
 
 function putPlayer() {
-    game.player1.x = player.x;
-    game.player1.y = player.y;
+    game.player1.x = game.player.x;
+    game.player1.y = game.player.y;
     $.ajax({
         method: "PUT",
-        url: (window.location.href + '/game') + game.player1.id,
+        url: (window.location.href + '/game/') + game.player1.id,
         data: JSON.stringify(game.player1),
         processData: false,
         headers: {
@@ -411,7 +391,7 @@ function putPlayer() {
 function getPlayer(callback) {
     $.ajax({
         method: "GET",
-        url: (window.location.href + '/game') + game.player2.id,
+        url: (window.location.href + '/game/') + game.player2.id,
         processData: false,
         headers: {
             "Content-Type": "application/json"
@@ -425,7 +405,7 @@ function getPlayer(callback) {
 function getPlayerSync(callback) {
     $.ajax({
         method: "GET",
-        url: (window.location.href + '/game') + game.player2.id,
+        url: (window.location.href + '/game/') + game.player2.id,
         async: false,
         processData: false,
         headers: {
