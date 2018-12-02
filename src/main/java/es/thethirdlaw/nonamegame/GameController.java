@@ -47,7 +47,6 @@ public class GameController {
 			generateMap();
 			player.setX(100);
 			player.setPlace(2);
-			
 		}
 		player.setY(320);
 		players.put(player.getId(), player);

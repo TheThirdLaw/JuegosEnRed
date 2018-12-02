@@ -61,10 +61,6 @@ NoName.preloadState.prototype = {
         game.load.image('Hi14', 'assets/scenarios/hierbas/Hi14.png');
         
         //Loading Text
-        var text = "Cargando Assets...";
-        var style = { font: "65px Arial", fill: "#ff0044", align: "center" };
-        var t = game.add.text(game.world.centerX-300, game.world.centerY, text, style);
-
     },
 
     create: function() {
