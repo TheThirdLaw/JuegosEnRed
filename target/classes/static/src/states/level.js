@@ -98,12 +98,12 @@ NoName.levelState.prototype = {
             if (game.map[i].isRock == true){
                 data = selectRock(game.map[i].sprite);
                 var rock = game.add.sprite(game.map[i].x, game.map[i].y, data[0]);
-                rock.scale.setTo(data[1] - game.map[i].y*0.001, data[1] - game.map[i].y*0.001);
+                rock.scale.setTo(data[1] + (0.15*(game.map[i].y-320)/555), data[1] + (0.15*(game.map[i].y-320)/555));
                 console.log("2");
             }else{
                 data = selectHerb(game.map[i].sprite);
                 var herb = game.add.sprite(game.map[i].x, game.map[i].y, data);
-                herb.scale.setTo(1/3 - game.map[i].y*0.0001, 1/3 - game.map[i].y*0.0001);
+                herb.scale.setTo(1/3 + (0.15*(game.map[i].y-320)/555), 1/3 + (0.15*(game.map[i].y-320)/555));
                 console.log("2");
             }
         }
