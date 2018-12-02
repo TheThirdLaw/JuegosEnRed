@@ -17,6 +17,8 @@ var savedy;
 var sizeR = 0.06;
 var xspeedR = 4;
 
+var ganar;
+
 //Declaración del texto que indica si huyes o persigues
 var job;
 
@@ -241,7 +243,13 @@ NoName.levelState.prototype = {
 }
 
 //Si el jugador y el rival colisionan, se acaba la partida y se pasa a endState
+//Si el jugador y el rival colisionan, se acaba la partida y se pasa a endState
 function  collision() {
+	if(game.player.x < game.rival.x){
+        ganar = true;
+    }else{
+    	ganar = false;
+    }
     game.state.start('endState');
 }
     

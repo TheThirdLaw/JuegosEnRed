@@ -6,6 +6,12 @@ var tie;
 
 NoName.tieState.prototype = {
 
+	init: function() {
+		if(game.player.x > game.rival.x){
+			deletePlayers()
+		}
+	},
+
     preload: function(){
         
     },
@@ -32,3 +38,16 @@ NoName.tieState.prototype = {
     function backtomenu(){
         game.state.start('menuState');
     }
+
+	function deletePlayers() {
+		$.ajax({
+	        method: "DELETE",
+	        url: (window.location.href + '/game/delete'),
+	        processData: false,
+	        headers: {
+	            "Content-Type": "application/json"
+	        },
+	    }).done(function (data) {
+	        console.log("Player removed: " + JSON.stringify(data));
+	    })
+	}

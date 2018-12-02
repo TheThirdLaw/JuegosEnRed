@@ -81,15 +81,12 @@ public class GameController {
 	}
 
 	// Con este DELETE borramos el jugador con ID = id
-	@DeleteMapping(value = "/game/{id}")
-	public ResponseEntity<Player> borraJugador(@PathVariable long id) {
-		Player savedPlayer = players.get(id);
-		if (savedPlayer != null) {
-			players.remove(savedPlayer.getId());
-			return new ResponseEntity<>(savedPlayer, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+	@DeleteMapping(value = "/game/delete")
+	@ResponseStatus(HttpStatus.OK)
+	public boolean borraJugador() {
+		players.clear();
+		nextId.set(0);
+		return true;
 	}
 
 	// Función que crea el mundo
@@ -133,6 +130,4 @@ public class GameController {
 		    }
 		}
 	}
-
-	// Falta una función que cree la trampa (json¿?)
 }

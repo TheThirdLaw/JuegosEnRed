@@ -5,6 +5,13 @@ NoName.endState = function(game){
 var info;
 
 NoName.endState.prototype = {
+		
+	init: function() {
+		if(ganar == false){
+			deletePlayers();
+		}
+	},
+		
 
     preload: function(){
         
@@ -14,7 +21,7 @@ NoName.endState.prototype = {
         game.world.setBounds(0, 0, 800, 600);
 
         //Si la posición del jugador es mayor, sale por pantalla un texto que indica que ha ganado
-        if(game.player.x < game.rival.x){
+        if(ganar == true){
             info = game.add.text(game.world.centerX-230, game.world.centerY-200, "¡Has ganado!", {
                 font: "65px Arial",
                 fill: "#ff0044",
@@ -22,7 +29,7 @@ NoName.endState.prototype = {
             });
         }
         //Si la posición del rival es mayor, sale por pantalla un texto que indica que ha perdido el jugador
-        else if(game.rival.x < game.player.x){
+        else if(ganar == false){
             info = game.add.text(game.world.centerX-230, game.world.centerY-200, "Has perdido...", {
                 font: "65px Arial",
                 fill: "#ff0044",
@@ -41,4 +48,17 @@ NoName.endState.prototype = {
 
 function backtomenu(){
     game.state.start('menuState');
+}
+
+function deletePlayers() {
+	$.ajax({
+        method: "DELETE",
+        url: (window.location.href + '/game/delete'),
+        processData: false,
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }).done(function (data) {
+        console.log("Player removed: " + JSON.stringify(data));
+    })
 }
