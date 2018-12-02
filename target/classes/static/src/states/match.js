@@ -2,6 +2,8 @@ NoName.matchState = function(game){
 
 }
 
+var map;
+
 NoName.matchState.prototype = {
 	
 	// Obtenemos el número de jugadores creados con this.getNumPlayers. Si ya hay 
@@ -14,7 +16,7 @@ NoName.matchState.prototype = {
 				console.log ('==========================================================');
 				game.state.start('menuState');
 			}
-		});
+        });
 	},
 		
     preload: function () {

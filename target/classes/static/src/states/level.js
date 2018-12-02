@@ -46,7 +46,11 @@ NoName.levelState.prototype = {
 			game.player2 = {id: 2}
 		} else {
 			game.player2 = {id: 1}
-		}
+        }
+
+        this.getWorld(function (){
+
+        });
 	},
         
     preload: function() {
@@ -87,12 +91,21 @@ NoName.levelState.prototype = {
         //Camara
         game.camera.follow(game.player);
     
-        //Generación del mundo. Se divide el tamaño total del mundo entre el tamaño de la pantalla
-        //Por cada uno de estos loops, se llama una vez a las funciones para generar las rocas y las hierbas
-        var loops = 16000/800;
-        for (var i = 0; i<loops; i++){
-            generateRocks(i);
-            generateHerbs(i);
+        //Generación del mundo.
+        for (var i = 0; i<game.map.length; i++){
+            console.log("1");
+            var data;
+            if (game.map[i].isRock == true){
+                data = selectRock(game.map[i].sprite);
+                var rock = game.add.sprite(game.map[i].x, game.map[i].y, data[0]);
+                rock.scale.setTo(data[1] - game.map[i].y*0.001, data[1] - game.map[i].y*0.001);
+                console.log("2");
+            }else{
+                data = selectHerb(game.map[i].sprite);
+                var herb = game.add.sprite(game.map[i].x, game.map[i].y, data);
+                herb.scale.setTo(1/3 - game.map[i].y*0.0001, 1/3 - game.map[i].y*0.0001);
+                console.log("2");
+            }
         }
     
         //Texto que aparece para indicar que tienes que hacer: perseguir o huir
@@ -213,6 +226,17 @@ NoName.levelState.prototype = {
         	game.rival.x = game.player2.x;
         	game.rival.y = game.player2.y;
         });
+        
+    },
+
+    getWorld: function (callback) {
+        $.ajax({
+            url: (window.location.href + '/game/world'),
+            async: false,
+        }).done(function (data) {
+            game.map = data;
+            callback(data);
+        })
     }
 }
 
@@ -272,57 +296,11 @@ function droptrap(){
     trap = game.add.sprite(game.player.x, game.player.y, 'trap');
     trap.scale.setTo(size, size);
     game.physics.enable(trap, Phaser.Physics.ARCADE);
-}    
-
-//Esta función "divide" a cada pantalla (cada loop del mundo) en 4 cuartos, y en cada cuarto hay un 50% de
-//probabilidades de que aparezca una roca por pantalla. estas tienen también un escalado aleatorio dentro de unos límites
-function generateRocks(i){
-    if(Math.random() >= 0.5){
-        var info =  selectRock();
-        var randX = Math.floor(Math.random() * 301);
-        var randY = Math.floor(Math.random() * 141) + 140;
-        var rock1 = game.add.sprite((800*i + randX), (550 - randY), info[0]);
-        rock1.scale.setTo(info[1] - randY*0.001, info[1] - randY*0.001);
-    }
-    if(Math.random() >= 0.5){
-        var info =  selectRock();        
-        var randX = Math.floor(Math.random() * 301) + 400;
-        var randY = Math.floor(Math.random() * 141) + 140;
-        var rock2 = game.add.sprite((800*i + randX), (550 - randY), info[0]);
-        rock2.scale.setTo(info[1] - randY*0.001, info[1] - randY*0.001);
-    }
-    if(Math.random() >= 0.5){
-        var info =  selectRock();        
-        var randX = Math.floor(Math.random() * 301);
-        var randY = Math.floor(Math.random() * 141);
-        var rock3 = game.add.sprite((800*i + randX), (550 - randY), info[0]);
-        rock3.scale.setTo(info[1] - randY*0.001, info[1] - randY*0.001);  
-    }
-    if(Math.random() >= 0.5){
-        var info =  selectRock();        
-        var randX = Math.floor(Math.random() * 301) + 400;
-        var randY = Math.floor(Math.random() * 141);
-        var rock4 = game.add.sprite((800*i + randX), (550 - randY), info[0]);
-        rock4.scale.setTo(info[1] - randY*0.001, info[1] - randY*0.001);
-    }
 }
 
-//Esta función permite que aparezcan por pantalla hasta 7 hierbas, las cuales tienen una x y una y aleatorias
-//y un tamaño también aleatorio dentro de unos límites
-function generateHerbs(i){
-    var rand = Math.floor(Math.random() * 7);
-    for(var j = 0; j < rand; j++){
-        var randX = Math.floor(Math.random() * 801);
-        var randY = Math.floor(Math.random() * 281);
-        var herb = game.add.sprite((800*i + randX), (580 - randY), selectHerb());
-        herb.scale.setTo(1/3 - randY*0.0001, 1/3 - randY*0.0001);
-    }
-}
-
-//Selecciona y devuelve de manera aleatoria una de los sprites de hierbas que hay disponibles
-function selectHerb(){
-    var random = Math.floor(Math.random() * 14) + 1;
-    switch(random){
+//Selecciona y devuelve una de los sprites de hierbas que hay disponibles
+function selectHerb(i){
+    switch(i){
         case 1:
             return "Hi1";
         case 2:
@@ -354,10 +332,9 @@ function selectHerb(){
     }
 }
 
-//Selecciona y devuelve de manera aleatoria una de los sprites de rocas que hay disponibles
-function selectRock(){
-    var random = Math.floor(Math.random() * 14) + 1;
-    switch(random){
+//Selecciona y devuelve una de los sprites de rocas que hay disponibles
+function selectRock(i){
+    switch(i){
         case 1:
             return ["Pi1", 2/3];
         case 2:

@@ -1,6 +1,8 @@
 package es.thethirdlaw.nonamegame;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GameController {
 
 	Map<Long, Player> players = new ConcurrentHashMap<>();
+	List<Obstacle> mapa = new ArrayList<>();
 	AtomicLong nextId = new AtomicLong(0);
 	Random rnd = new Random();
 
@@ -37,12 +40,14 @@ public class GameController {
 		Player player = new Player();
 		long id = nextId.incrementAndGet();
 		player.setId(id);
-		if(id == 1) {
+		if (id == 1) {
 			player.setX(10);
 			player.setPlace(1);
-		}else {
+		} else {
+			generateMap();
 			player.setX(100);
 			player.setPlace(2);
+			
 		}
 		player.setY(320);
 		players.put(player.getId(), player);
@@ -87,8 +92,48 @@ public class GameController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+
+	// Función que crea el mundo
+	@GetMapping(value = "/game/world")
+	public ResponseEntity<List<Obstacle>> getWorld() {
+		return new ResponseEntity<>(mapa, HttpStatus.OK);
+	}
 	
-	//Falta una función que cree el mundo
-	
-	//Falta una función que cree la trampa (json¿?)
+	public void generateMap(){
+		for (int i = 0; i < 20; i++) {
+			if (Math.random() >= 0.5) {
+				double randX = Math.floor(Math.random() * 301);
+				double randY = Math.floor(Math.random() * 141) + 140;
+				double sprite = Math.floor(Math.random() * 14) + 1;
+				mapa.add(new Obstacle(800 * i + randX, 550 - randY, true, sprite));
+			}
+			if (Math.random() >= 0.5) {
+				double randX = Math.floor(Math.random() * 301) + 400;
+				double randY = Math.floor(Math.random() * 141) + 140;
+				double sprite = Math.floor(Math.random() * 14) + 1;
+				mapa.add(new Obstacle(800 * i + randX, 550 - randY, true, sprite));
+			}
+			if (Math.random() >= 0.5) {
+				double randX = Math.floor(Math.random() * 301);
+				double randY = Math.floor(Math.random() * 141);
+				double sprite = Math.floor(Math.random() * 14) + 1;
+				mapa.add(new Obstacle(800 * i + randX, 550 - randY, true, sprite));
+			}
+			if (Math.random() >= 0.5) {
+				double randX = Math.floor(Math.random() * 301) + 400;
+				double randY = Math.floor(Math.random() * 141);
+				double sprite = Math.floor(Math.random() * 14) + 1;
+				mapa.add(new Obstacle(800 * i + randX, 550 - randY, true, sprite));
+			}
+			double rand = Math.floor(Math.random() * 7);
+		    for(int j = 0; j < rand; j++){
+		        double randX = Math.floor(Math.random() * 801);
+		        double randY = Math.floor(Math.random() * 281);
+		        double sprite = Math.floor(Math.random() * 14) + 1;
+				mapa.add(new Obstacle(800 * i + randX, 550 - randY, false, sprite));
+		    }
+		}
+	}
+
+	// Falta una función que cree la trampa (json¿?)
 }
