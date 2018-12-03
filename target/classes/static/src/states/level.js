@@ -191,7 +191,7 @@ NoName.levelState.prototype = {
             }
         }
         //Una vez pasan tres segundos desde la activación de la trampa, se destuye
-        if(game.time.now == lucestime + 3000){
+        if(game.time.now >= lucestime + 3000){
             pantallazo.destroy();
         }
         
