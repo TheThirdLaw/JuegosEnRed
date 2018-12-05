@@ -6,6 +6,7 @@ var tie;
 
 NoName.tieState.prototype = {
 
+	//Se elimina a los jugadores
 	init: function() {
 		if(game.player.x > game.rival.x){
 			deletePlayers()

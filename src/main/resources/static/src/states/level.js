@@ -41,6 +41,7 @@ var lucestime;
 //Se crea el icono del salto       
 var salto;
     
+//Se da un id al jugador
 NoName.levelState.prototype = {
 
     init: function() {
@@ -64,6 +65,7 @@ NoName.levelState.prototype = {
         game.add.tileSprite(0, 0, 16000, 600, 'background');
         game.world.setBounds(0, 0, 16000, 600);
         
+        //Dependiendo de si estás delante o detrás, se te asigna un sprite determinado para distinguirte con mayor facilidad
         getPlayerSync(function(data) {
         	if(game.player1.place == 1){
             	game.player = game.add.sprite(game.player1.x, game.player1.y, 'example_char');
@@ -93,8 +95,8 @@ NoName.levelState.prototype = {
         //Camara
         game.camera.follow(game.player);
     
-        //Generación del mundo.
-        for (var i = 0; i<game.map.length; i++){
+        //Se lee el array que pasa el servidor y se generan sprites
+        for (var i = 0; i < game.map.length; i++){
             console.log("1");
             var data;
             if (game.map[i].isRock == true){
@@ -148,14 +150,14 @@ NoName.levelState.prototype = {
             job.setText('¡Huye!');
         }
         
+        //Se determina como varía el tamaño en función a la y
         size = 0.06 + (0.15*((game.player.y-320)/555));
         game.player.scale.setTo(size, size);
         sizeR = 0.06 + (0.15*((game.rival.y-320)/555));
         game.rival.scale.setTo(sizeR, sizeR);
         
     
-        //Teclas para el jugador, si está más cerca del límite inferior, se hace mayor el sprite, para dar sensación de profundidad
-        //No se puede ir para la izquierda
+        //Teclas para el jugador
         if(this.wKey.isDown){
             if(ygame > 320){
                 game.player.y -= yspeed;
@@ -207,7 +209,7 @@ NoName.levelState.prototype = {
             xspeed = 3;
         }
 
-        //
+        //Si se pulsa la P y se ha seleccionado el teletransporte, se usa el poder
         if(this.pKey.isDown){
             if(hasjump){
                 jumppow();
@@ -215,6 +217,7 @@ NoName.levelState.prototype = {
             }
         }
         
+        //Si el rival ha soltado la trampa y esta aún no se ha creado, se crea el la misma x e y que el rival
         if(game.player2.trap == true && trap2 == null){
         	trap2 = game.add.sprite(game.rival.x, game.rival.y, 'trap');
             trap2.scale.setTo(sizeR, sizeR);
@@ -223,6 +226,7 @@ NoName.levelState.prototype = {
 
         putPlayer();
 
+        //La x e y del rival son las mismas que las del jugador 2
         getPlayer(function(data){
         	game.player2 = JSON.parse(JSON.stringify(data));
         	game.rival.x = game.player2.x;
@@ -231,6 +235,7 @@ NoName.levelState.prototype = {
         
     },
 
+    //Se pide el array del servidor que determina como es el mundo
     getWorld: function (callback) {
         $.ajax({
             url: (window.location.href + '/game/world'),
@@ -242,7 +247,6 @@ NoName.levelState.prototype = {
     }
 }
 
-//Si el jugador y el rival colisionan, se acaba la partida y se pasa a endState
 //Si el jugador y el rival colisionan, se acaba la partida y se pasa a endState
 function  collision() {
 	if(game.player.x < game.rival.x){
@@ -286,11 +290,12 @@ function jumppow(){
     game.player.x = game.rival.x + 100;
 }
     
-//Se destruye la trampa y la pantalla se pone en negro
+//Se destruye la trampa
 function lighttrap(){
     trap.destroy();        
 }
 
+//Si te chocas con la trampa del rival, la pantalla se pone en negro
 function lighttrap2(){
     trap2.destroy();        
     pantallazo = game.add.sprite(0, 0, 'blackscreen');
@@ -374,6 +379,7 @@ function selectRock(i){
     }
 }
 
+//Se actualiza la posición del jugador
 function putPlayer() {
     game.player1.x = game.player.x;
     game.player1.y = game.player.y;
@@ -393,6 +399,7 @@ function putPlayer() {
     })
 }
 
+//Se pide la información del jugador 2
 function getPlayer(callback) {
     $.ajax({
         method: "GET",
@@ -407,6 +414,7 @@ function getPlayer(callback) {
     })
 }
 
+//Se pide la información de los jugadores de manera síncrona porque si no puede dar errores siendo undefined
 function getPlayerSync(callback) {
     $.ajax({
         method: "GET",

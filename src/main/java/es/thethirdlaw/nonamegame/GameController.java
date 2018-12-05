@@ -33,7 +33,7 @@ public class GameController {
 		return players.values();
 	}
 
-	// Con POST creamos un nuevo jugador
+	// Con POST creamos un nuevo jugador el cuál tendrá una x diferente dependiendo de su id
 	@PostMapping(value = "/game")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Player newPlayer() {
@@ -80,7 +80,7 @@ public class GameController {
 		}
 	}
 
-	// Con este DELETE borramos el jugador con ID = id
+	// Con este DELETE borramos a todos los jugadores y colocamos el id en 0
 	@DeleteMapping(value = "/game/delete")
 	@ResponseStatus(HttpStatus.OK)
 	public boolean borraJugador() {
@@ -95,6 +95,8 @@ public class GameController {
 		return new ResponseEntity<>(mapa, HttpStatus.OK);
 	}
 	
+	//Se generan las rocas y las hierbas de igual manera que en la fase anterior, simplemente,
+	//ahora se deben generar en el servidor para que así sea igual para los dos jugadores
 	public void generateMap(){
 		for (int i = 0; i < 20; i++) {
 			if (Math.random() >= 0.5) {

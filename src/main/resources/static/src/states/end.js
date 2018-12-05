@@ -5,7 +5,9 @@ NoName.endState = function(game){
 var info;
 
 NoName.endState.prototype = {
-		
+	
+	//El jugador que pierde (el que sale el último de la partida) elimina a los jugadores para que se pueda jugar
+	//otra partida sin reininciar el servidor
 	init: function() {
 		if(ganar == false){
 			deletePlayers();
