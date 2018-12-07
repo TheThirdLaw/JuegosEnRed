@@ -38,6 +38,12 @@ NoName.pregameState.prototype = {
 }
 
 function playPregame() {
+	
+	game.connection = new WebSocket('ws://' + window.location.hostname + ':8087/nonamegame');
+    game.connection.onerror = function(e) {
+		console.log("WS error: " + e);
+	}
+    
     game.time.events.remove(time);
     game.state.start('matchState');
 }

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 public class GameController {
 
 	Map<Long, Player> players = new ConcurrentHashMap<>();
@@ -27,15 +26,10 @@ public class GameController {
 	AtomicLong nextId = new AtomicLong(0);
 	Random rnd = new Random();
 
-	// Con GET recuperamos el número de jugadores
-	@GetMapping(value = "/game")
 	public Collection<Player> getPlayers() {
 		return players.values();
 	}
 
-	// Con POST creamos un nuevo jugador el cuál tendrá una x diferente dependiendo de su id
-	@PostMapping(value = "/game")
-	@ResponseStatus(HttpStatus.CREATED)
 	public Player newPlayer() {
 		Player player = new Player();
 		long id = nextId.incrementAndGet();
@@ -51,6 +45,12 @@ public class GameController {
 		player.setY(320);
 		players.put(player.getId(), player);
 		return player;
+	}
+	
+	public boolean borraJugador() {
+		players.clear();
+		nextId.set(0);
+		return true;
 	}
 
 	// Con este GET, podemos recuperar la información particular de cada uno de los
@@ -78,15 +78,6 @@ public class GameController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}
-
-	// Con este DELETE borramos a todos los jugadores y colocamos el id en 0
-	@DeleteMapping(value = "/game/delete")
-	@ResponseStatus(HttpStatus.OK)
-	public boolean borraJugador() {
-		players.clear();
-		nextId.set(0);
-		return true;
 	}
 
 	// Función que crea el mundo

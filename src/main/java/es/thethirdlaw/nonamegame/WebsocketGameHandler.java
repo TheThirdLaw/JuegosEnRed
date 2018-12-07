@@ -19,56 +19,42 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class WebsocketGameHandler extends TextWebSocketHandler {
 
 	private static Set<WebSocketSession> sessions = Collections.synchronizedSet(new HashSet<WebSocketSession>());
+	Map<Long, Player> players = new ConcurrentHashMap<>();
 	ObjectMapper mapper = new ObjectMapper();
 	boolean debug = true;
 	GameController gameController = new GameController();
-
-	// Invoked after WebSocket negotiation has succeeded and the WebSocket
-	// connection is opened and ready for use.
+	
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		sessions.add(session);
 	}
 
-	// Invoked after the WebSocket connection has been closed by either side, or
-	// after a transport error has occurred. Although the session may technically
-	// still be open, depending on the underlying implementation, sending messages
-	// at this point is discouraged and most likely will not succeed.
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		sessions.remove(session);
 	}
 
-	// Invoked when a new WebSocket message arrives.
+	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-
+		
 		synchronized (sessions) {
-			JsonNode node = mapper.readTree(message.getPayload());
-			ObjectNode json = mapper.createObjectNode();
-
-			switch (node.get("type").asText()) {
-			case "JOIN":
-				if (gameController.getPlayers().size() < 2) {
-					Player player = gameController.newPlayer();
-
-					ObjectNode jsonPlayer = mapper.createObjectNode();
-					jsonPlayer.put("id", player.getId());
-					jsonPlayer.put("x", player.getX());
-					jsonPlayer.put("y", player.getY());
-					jsonPlayer.put("score", player.getPlace());
-
-					json.put("type", "PLAYER_CREATED");
-					json.putPOJO("player", jsonPlayer);
-					//json.putPOJO("player", player);
-				} else {
-					json.put("type", "GAME_CPMPLETE");
-				}
-				session.sendMessage(new TextMessage(json.toString()));
-
-				if (debug)
-					System.out.println("[DEBUG] " + json.toString());
-				break;
-
-			default:
-				break;
+			
+			JsonNode readnode = mapper.readTree(message.getPayload());
+			String type = readnode.get("type").asText();
+			ObjectNode writenode = mapper.createObjectNode();
+			String msg;
+			
+			switch (type) {
+			
+				case "getNumPlayers":
+					writenode = mapper.createObjectNode();
+					writenode.put("type", "getNumPlayers");
+					writenode.put("longitud", players.size());
+					
+					msg = writenode.toString();
+					session.sendMessage(new TextMessage(msg));
+					break;
+					
+				default:
+					break;
 			}
 		}
 	}
