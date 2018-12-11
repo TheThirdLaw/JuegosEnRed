@@ -7,15 +7,14 @@ var player;
 var xgame = 10;
 var ygame = 320;
 var size = 0.06;
-var yspeed = 4;
-var xspeed = 4;
+var yspeed = 5;
+var xspeed;
 
 //Declaración de variables del rival
 var rival;
 var ygameR = 320;
 var savedy;
 var sizeR = 0.06;
-var xspeedR = 6;
 
 var ganar;
 
@@ -40,6 +39,8 @@ var lucestime;
 
 //Se crea el icono del salto       
 var salto;
+
+var cont;
     
 NoName.levelState.prototype = {
 
@@ -120,7 +121,13 @@ NoName.levelState.prototype = {
     
         //Buff de velocidad que inicialmente tiene el rival
         //Durante 4 segundos el rival tiene velocidad 4, a partir de entonces, se llama a speedy y esta función cambia la velocidad
-        sptimer = game.time.events.add(Phaser.Timer.SECOND * 5, speedy, this);
+        if(game.player.x > game.rival.x){
+        	xspeed = 7;
+        	sptimer = game.time.events.add(Phaser.Timer.SECOND * 5, speedy, this);
+        }else if(game.player.x < game.rival.x){
+        	xspeed = 5;
+        }
+        
     
         //Si se ha seleccionado los power-ups y trampas anteriormente, aparecerán los iconos por pantalla
         if(hasbomb){
@@ -144,8 +151,14 @@ NoName.levelState.prototype = {
         //Cambia el texto dependiendo de si está por delante o por detrás
         if(game.player.x < game.rival.x){
             job.setText('¡Persíguelo!');
+            cont = 1;
         }else if(game.rival.x < game.player.x){
             job.setText('¡Huye!');
+            if(cont == 1){
+            	xspeed = 7;
+            	cont = 2;
+            	sptimer = game.time.events.add(Phaser.Timer.SECOND * 3, speedy, this);
+            }
         }
         
         size = 0.06 + (0.15*((game.player.y-320)/555));
@@ -270,20 +283,20 @@ function makevisible(sprite){
     
 //Acaba con el buff de velocidad incial que tiene el rival
 function speedy(){
-    xspeedR = 4;
+    xspeed = 5;
 }
 
 //Se destruye el icono de la bomba y se activa, aumentando la velocidad del jugador
 function bombpow(){
     bomba.pendingDestroy = true;
-    xspeed = 6;
+    xspeed = 8;
     bombatime = game.time.now;
 }
     
 //Se usa el poder del teletransporte
 function jumppow(){
     salto.pendingDestroy = true;
-    game.player.x = game.rival.x + 100;
+    game.player.x = game.player.x + 150;
 }
     
 //Se destruye la trampa y la pantalla se pone en negro
