@@ -7,15 +7,15 @@ var player;
 var xgame = 10;
 var ygame = 320;
 var size = 0.06;
-var yspeed = 3;
-var xspeed = 3;
+var yspeed = 4;
+var xspeed = 4;
 
 //Declaración de variables del rival
 var rival;
 var ygameR = 320;
 var savedy;
 var sizeR = 0.06;
-var xspeedR = 4;
+var xspeedR = 6;
 
 var ganar;
 
@@ -159,14 +159,14 @@ NoName.levelState.prototype = {
         if(this.wKey.isDown){
             if(ygame > 320){
                 game.player.y -= yspeed;
-                ygame -= 3;
+                ygame -= 4;
         
             }
         }
         if(this.sKey.isDown){
             if(ygame < 555){
                 game.player.y += yspeed;
-                ygame += 3;
+                ygame += 4;
             }
         }
         if(this.dKey.isDown){
@@ -204,7 +204,7 @@ NoName.levelState.prototype = {
         }
         //Una vez pasan tres segundos desde la activación de la bomba, la velocidad vuelve a la normal
         if(game.time.now == bombatime + 3000){
-            xspeed = 3;
+            xspeed = 4;
         }
 
         //
@@ -270,13 +270,13 @@ function makevisible(sprite){
     
 //Acaba con el buff de velocidad incial que tiene el rival
 function speedy(){
-    xspeedR = 3;
+    xspeedR = 4;
 }
 
 //Se destruye el icono de la bomba y se activa, aumentando la velocidad del jugador
 function bombpow(){
     bomba.pendingDestroy = true;
-    xspeed = 5;
+    xspeed = 6;
     bombatime = game.time.now;
 }
     
