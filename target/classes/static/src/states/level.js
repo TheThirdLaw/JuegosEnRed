@@ -179,7 +179,7 @@ NoName.levelState.prototype = {
             }
         }
         if(this.sKey.isDown){
-            if(ygame < 540){
+            if(ygame < 510){
                 game.player.y += yspeed;
                 ygame += 4;
             }
