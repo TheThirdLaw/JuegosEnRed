@@ -7,15 +7,14 @@ var player;
 var xgame = 10;
 var ygame = 320;
 var size = 0.06;
-var yspeed = 3;
-var xspeed = 3;
+var yspeed = 5;
+var xspeed;
 
 //Declaración de variables del rival
 var rival;
 var ygameR = 320;
 var savedy;
 var sizeR = 0.06;
-var xspeedR = 4;
 
 var ganar;
 
@@ -24,7 +23,8 @@ var job;
 
 //Timer para el buff de velocidad del rival
 var sptimer;
-   
+var inittimer;
+
 //Se crea el icono de la bomba y una variable para determinar la duración del power-up
 var bomba;
 var bombatime;
@@ -40,6 +40,8 @@ var lucestime;
 
 //Se crea el icono del salto       
 var salto;
+
+var cont;
     
 //Se da un id al jugador
 NoName.levelState.prototype = {
@@ -122,7 +124,14 @@ NoName.levelState.prototype = {
     
         //Buff de velocidad que inicialmente tiene el rival
         //Durante 4 segundos el rival tiene velocidad 4, a partir de entonces, se llama a speedy y esta función cambia la velocidad
-        sptimer = game.time.events.add(Phaser.Timer.SECOND * 5, speedy, this);
+        if(game.player.x > game.rival.x){
+        	xspeed = 7;
+        	sptimer = game.time.events.add(Phaser.Timer.SECOND * 5, speedy, this);
+        }else if(game.player.x < game.rival.x){
+            xspeed = 0;
+            inittimer = game.time.events.add(Phaser.Timer.SECOND * 2, speedy, this);
+        }
+        
     
         //Si se ha seleccionado los power-ups y trampas anteriormente, aparecerán los iconos por pantalla
         if(hasbomb){
@@ -146,8 +155,14 @@ NoName.levelState.prototype = {
         //Cambia el texto dependiendo de si está por delante o por detrás
         if(game.player.x < game.rival.x){
             job.setText('¡Persíguelo!');
+            cont = 1;
         }else if(game.rival.x < game.player.x){
             job.setText('¡Huye!');
+            if(cont == 1){
+            	xspeed = 7;
+            	cont = 2;
+            	sptimer = game.time.events.add(Phaser.Timer.SECOND * 3, speedy, this);
+            }
         }
         
         //Se determina como varía el tamaño en función a la y
@@ -161,14 +176,14 @@ NoName.levelState.prototype = {
         if(this.wKey.isDown){
             if(ygame > 320){
                 game.player.y -= yspeed;
-                ygame -= 3;
+                ygame -= 4;
         
             }
         }
         if(this.sKey.isDown){
-            if(ygame < 555){
+            if(ygame < 510){
                 game.player.y += yspeed;
-                ygame += 3;
+                ygame += 4;
             }
         }
         if(this.dKey.isDown){
@@ -206,7 +221,7 @@ NoName.levelState.prototype = {
         }
         //Una vez pasan tres segundos desde la activación de la bomba, la velocidad vuelve a la normal
         if(game.time.now == bombatime + 3000){
-            xspeed = 3;
+            xspeed = 4;
         }
 
         //Si se pulsa la P y se ha seleccionado el teletransporte, se usa el poder
@@ -274,20 +289,20 @@ function makevisible(sprite){
     
 //Acaba con el buff de velocidad incial que tiene el rival
 function speedy(){
-    xspeedR = 3;
+    xspeed = 5;
 }
 
 //Se destruye el icono de la bomba y se activa, aumentando la velocidad del jugador
 function bombpow(){
     bomba.pendingDestroy = true;
-    xspeed = 5;
+    xspeed = 8;
     bombatime = game.time.now;
 }
     
 //Se usa el poder del teletransporte
 function jumppow(){
     salto.pendingDestroy = true;
-    game.player.x = game.rival.x + 100;
+    game.player.x = game.player.x + 150;
 }
     
 //Se destruye la trampa
