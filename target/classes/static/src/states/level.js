@@ -23,7 +23,8 @@ var job;
 
 //Timer para el buff de velocidad del rival
 var sptimer;
-   
+var inittimer;
+
 //Se crea el icono de la bomba y una variable para determinar la duración del power-up
 var bomba;
 var bombatime;
@@ -125,7 +126,8 @@ NoName.levelState.prototype = {
         	xspeed = 7;
         	sptimer = game.time.events.add(Phaser.Timer.SECOND * 5, speedy, this);
         }else if(game.player.x < game.rival.x){
-        	xspeed = 5;
+            xspeed = 0;
+            inittimer = game.time.events.add(Phaser.Timer.SECOND * 2, speedy, this);
         }
         
     
@@ -177,7 +179,7 @@ NoName.levelState.prototype = {
             }
         }
         if(this.sKey.isDown){
-            if(ygame < 555){
+            if(ygame < 540){
                 game.player.y += yspeed;
                 ygame += 4;
             }
