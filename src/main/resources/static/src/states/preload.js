@@ -8,6 +8,7 @@ NoName.preloadState.prototype = {
 
         //Load Assets
         game.load.image('background', 'assets/menu/rsz_backgroundtileable.png');
+        game.load.image('lvlbackground', 'assets/images/rsz_lv_back.png');
         game.load.spritesheet('settings', 'assets/botones 2.0/rsz_bconf.png', 143, 98);
         game.load.spritesheet('play', 'assets/botones 2.0/rsz_bplay.png', 249, 149);
         game.load.spritesheet('shop', 'assets/botones 2.0/rsz_bshop.png', 143, 99);
