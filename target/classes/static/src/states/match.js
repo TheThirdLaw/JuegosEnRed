@@ -6,16 +6,25 @@ var map;
 
 NoName.matchState.prototype = {
 	
-	//Si hay ya dos jugadores no te deja jugar ya que el servidor está lleno
 	init: function () {
-		this.getNumPlayers(function (numPlayers) {
-			if (numPlayers.length > 1) {
-				console.log ('==========================================================');
-				console.log ('= El servidor está lleno. Vuelve a intentarlo más tarde. =');
-				console.log ('==========================================================');
-				game.state.start('menuState');
+		game.connection.onmessage = function(msg) {
+			data = JSON.parse(msg.data);
+			if (data.type == "getNumPlayers") {
+				if (data.longitud == 2 && game.player1 !== undefined) {
+					console.log ('##### COMIENZA EL JUEGO #####');
+					game.state.start('levelState');
+				}
 			}
-        });
+			
+			if (data.type == "createPlayer") {
+				game.player1 = data.jugador;
+				if(game.haslight == true){
+					game.player1.trap = true;
+				}else{
+					game.player1.trap = false;
+				}
+			}
+		}
 	},
 		
 
@@ -25,31 +34,26 @@ NoName.matchState.prototype = {
         var t = game.add.text(game.world.centerX - 200, 0, text, style);
     },
 
-    //Se crea al jugador
     create: function () {
-    	this.createPlayer();
+    	var msg = {type: "createPlayer"};
+    	game.connection.send(JSON.stringify(msg));
     },
 
-    //Cuando haya dos jugadores en el servidor, comienza el juego
     update: function () {
-		this.getNumPlayers(function (numPlayers) {
-			if (numPlayers.length === 2) {
-				console.log ('##### COMIENZA EL JUEGO #####');
-				game.state.start('levelState');
-			}
-		});
+    	var msg = {type: "getNumPlayers"};
+		game.connection.send(JSON.stringify(msg));
     }, 
     
-    getNumPlayers: function (callback) {
+    /*getNumPlayers: function (callback) {
         $.ajax({
             url: (window.location.href + '/game'),
             async: false,
         }).done(function (data) {
             callback(data);
         })
-    },
+    },*/
     
-    createPlayer: function () {
+    /*createPlayer: function () {
         $.ajax({
             method: "POST",
             url: (window.location.href + '/game'),
@@ -61,5 +65,5 @@ NoName.matchState.prototype = {
             console.log("Player created: " + JSON.stringify(data));
             game.player1 = data
         })
-    }
+    }*/
 }

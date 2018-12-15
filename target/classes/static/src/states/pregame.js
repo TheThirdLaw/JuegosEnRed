@@ -38,12 +38,6 @@ NoName.pregameState.prototype = {
 }
 
 function playPregame() {
-	
-	game.connection = new WebSocket('ws://' + window.location.hostname + ':8087/nonamegame');
-    game.connection.onerror = function(e) {
-		console.log("WS error: " + e);
-	}
-    
     game.time.events.remove(time);
     game.state.start('matchState');
 }
@@ -59,13 +53,13 @@ function flechaI() {
 function bomb() {
     bombrsz = game.add.button(283, 352, 'bomb', outSprite1, this);
     bombrsz.scale.setTo(0.535);
-    hasbomb = true;
+    game.hasbomb = true;
 }
 
 function lightsOut() {
     LOrsz = game.add.button(365, 353, 'lightsout', outSprite2, this);
     LOrsz.scale.setTo(0.535);
-    haslight = true;
+    game.haslight = true;
 }
 
 function morderbloq() {
@@ -75,20 +69,20 @@ function morderbloq() {
 function salto() {
     jumprsz = game.add.button(447, 352, 'salto', outSprite3, this);
     jumprsz.scale.setTo(0.535);
-    hasjump = true;
+    game.hasjump = true;
 }
 
 function outSprite1() {
     bombrsz.pendingDestroy = true;
-    hasbomb = false;
+    game.hasbomb = false;
 }
 
 function outSprite2() {
     LOrsz.pendingDestroy = true;
-    haslight = false;
+    game.haslight = false;
 }
 
 function outSprite3() {
     jumprsz.pendingDestroy = true;
-    hasjump = false;
+    game.hasjump = false;
 }
