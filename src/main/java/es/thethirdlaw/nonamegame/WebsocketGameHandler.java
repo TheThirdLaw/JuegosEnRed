@@ -74,6 +74,13 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 					session.sendMessage(new TextMessage(msg));
 					break;
 					
+				case "getWorld":
+					wnode.put("type", "getWorld");
+					wnode.set("map", mapper.valueToTree(mapa));
+					msg = wnode.toString();
+					session.sendMessage(new TextMessage(msg));
+					break;
+					
 				default:
 					break;
 			}
@@ -133,7 +140,7 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 		}
 	}
 	
-	public ResponseEntity<List<Obstacle>> getWorld() {
+	/*public ResponseEntity<List<Obstacle>> getWorld() {
 		return new ResponseEntity<>(mapa, HttpStatus.OK);
-	}
+	}*/
 }

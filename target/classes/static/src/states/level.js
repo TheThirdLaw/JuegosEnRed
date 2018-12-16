@@ -45,15 +45,20 @@ var salto;
 NoName.levelState.prototype = {
 
     init: function() {
+    	game.connection.onmessage = function(msg) {
+			data = JSON.parse(msg.data);
+			if (data.type == "getWorld") {
+				game.map = data.map;
+			}
+    	}
+			
 		if (game.player1.id == 1) {
 			game.player2 = {id: 2}
 		} else {
 			game.player2 = {id: 1}
         }
-
-        this.getWorld(function (){
-
-        });
+		
+		getWorld();
 	},
         
     preload: function() {
@@ -66,7 +71,6 @@ NoName.levelState.prototype = {
         game.world.setBounds(0, 0, 16000, 600);
         
         //Dependiendo de si estás delante o detrás, se te asigna un sprite determinado para distinguirte con mayor facilidad
-        getPlayerSync(function(data) {
         	if(game.player1.place == 1){
             	game.player = game.add.sprite(game.player1.x, game.player1.y, 'example_char');
             	game.rival = game.add.sprite(game.player2.x, game.player2.y, 'example_enem');
@@ -74,8 +78,7 @@ NoName.levelState.prototype = {
             	game.player = game.add.sprite(game.player1.x, game.player1.y, 'example_enem');
             	game.rival = game.add.sprite(game.player2.x, game.player2.y, 'example_char');
             }
-        });
-        
+        	
         //Funciones básicas del jugador (teclas, aparición del sprite, escalado y físicas)
         this.wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
         this.sKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
@@ -236,7 +239,7 @@ NoName.levelState.prototype = {
     },
 
     //Se pide el array del servidor que determina como es el mundo
-    getWorld: function (callback) {
+    /*getWorld: function (callback) {
         $.ajax({
             url: (window.location.href + '/game/world'),
             async: false,
@@ -244,7 +247,7 @@ NoName.levelState.prototype = {
             game.map = data;
             callback(data);
         })
-    }
+    }*/
 }
 
 //Si el jugador y el rival colisionan, se acaba la partida y se pasa a endState
@@ -415,7 +418,7 @@ function getPlayer(callback) {
 }
 
 //Se pide la información de los jugadores de manera síncrona porque si no puede dar errores siendo undefined
-function getPlayerSync(callback) {
+/*function getPlayerSync(callback) {
     $.ajax({
         method: "GET",
         url: (window.location.href + '/game/') + game.player2.id,
@@ -428,4 +431,10 @@ function getPlayerSync(callback) {
         game.player2 = JSON.parse(JSON.stringify(data));
         callback(data);
     })
+}*/
+
+function getWorld() {
+	var msg = {type: "getWorld"};
+	game.connection.send(JSON.stringify(msg));
+}
 }
