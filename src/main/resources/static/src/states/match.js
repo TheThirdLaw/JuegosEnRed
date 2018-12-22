@@ -24,6 +24,10 @@ NoName.matchState.prototype = {
 					game.player1.trap = false;
 				}
 			}
+			
+			if (data.type == "getWorld") {
+				game.map = data.map;
+			}
 		}
 	},
 		
@@ -36,6 +40,9 @@ NoName.matchState.prototype = {
 
     create: function () {
     	var msg = {type: "createPlayer"};
+    	game.connection.send(JSON.stringify(msg));
+    	
+    	var msg = {type: "getWorld"};
     	game.connection.send(JSON.stringify(msg));
     },
 

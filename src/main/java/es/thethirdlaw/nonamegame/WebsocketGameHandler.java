@@ -94,8 +94,8 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 		if (id == 1) {
 			player.setX(10);
 			player.setPlace(1);
-		} else {
 			generateMap();
+		} else {
 			player.setX(100);
 			player.setPlace(2);
 		}

@@ -47,18 +47,18 @@ NoName.levelState.prototype = {
     init: function() {
     	game.connection.onmessage = function(msg) {
 			data = JSON.parse(msg.data);
-			if (data.type == "getWorld") {
+			/*if (data.type == "getWorld") {
 				game.map = data.map;
-			}
+			}*/
     	}
+    	
+    	//getWorld();
 			
 		if (game.player1.id == 1) {
 			game.player2 = {id: 2}
 		} else {
 			game.player2 = {id: 1}
-        }
-		
-		getWorld();
+        }	
 	},
         
     preload: function() {
@@ -433,8 +433,7 @@ function getPlayer(callback) {
     })
 }*/
 
-function getWorld() {
+/*function getWorld() {
 	var msg = {type: "getWorld"};
 	game.connection.send(JSON.stringify(msg));
-}
-}
+}*/
