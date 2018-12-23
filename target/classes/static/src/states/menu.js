@@ -14,7 +14,8 @@ NoName.menuState.prototype = {
         game.add.button(100, 200, 'play', playButton, this, 1, 0, 2);
         game.add.button(101, 370, 'settings', settingsButton, this, 1, 0, 2);
         game.add.button(245, 370, 'shop', shopButton, this, 1, 0, 2);
-        game.add.button(400, 450, 'credsbutton', credsButton, this, 1, 0, 2);
+        creds = game.add.button(605, 460, 'credsbutton', credsButton, this, 1, 0, 2);
+        creds.scale.setTo(0.5, 0.5);
     },
 
     update: function() {
