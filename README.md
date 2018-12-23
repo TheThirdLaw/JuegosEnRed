@@ -43,7 +43,7 @@ Categoría: juego de plataformas, competitivo
 Público: todos los públicos
 
 
-![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/tree/master/src/main/resources/static/assets/PInicio.PNG)
+![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/master/src/main/resources/static/assets/images/PInicio.PNG)
 
 
 El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para despistar a su rival, y colocarse tras él, donde los papeles se invierten y el perseguidor pasa a ser perseguido. El juego cuenta con un sistema de trampas para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel. 
@@ -94,27 +94,27 @@ Estas recompensas dependen del nivel del rival (también pueden ser penalizacion
 
 -Carga: Carga todos los assets.
 <br>
-![Cargando](https://github.com/TheThirdLaw/JuegosEnRed/tree/master/src/main/resources/static/images/PCargando.PNG)
+![Cargando](https://github.com/TheThirdLaw/JuegosEnRed/blob/master/src/main/resources/static/images/PCargando.PNG)
 <br>
 <br>
 -Menú principal: con opciones de iniciar partida, acceder a la tienda, a los créditos y a la configuración.
 <br>
-![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/tree/master/src/main/resources/static/PInicio.PNG)
+![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/master/src/main/resources/static/PInicio.PNG)
 <br>
 <br>
 -Pregame Lobby: Pantalla donde eliges tus power-ups y trampas, y te preparas para el juego.
 <br>
-![Pregame](https://github.com/TheThirdLaw/JuegosEnRed/tree/master/src/main/resources/static/PElegirCartas.PNG)
+![Pregame](https://github.com/TheThirdLaw/JuegosEnRed/blob/master/src/main/resources/static/PElegirCartas.PNG)
 <br>
 <br>
 -Level: El juego en sí.
 <br>
-![Level](https://github.com/TheThirdLaw/JuegosEnRed/tree/master/src/main/resources/static/PLevel.png)
+![Level](https://github.com/TheThirdLaw/JuegosEnRed/blob/master/src/main/resources/static/PLevel.png)
 <br>
 <br>
 Aparte hay otros estados menores, como la cuenta atrás, configuración, o tienda. Están todas detalladas en este diagrama:
 <br>
-![Level](https://github.com/TheThirdLaw/JuegosEnRed/tree/master/src/main/resources/static/DiagramaV2.png)
+![Level](https://github.com/TheThirdLaw/JuegosEnRed/blob/master/src/main/resources/static/DiagramaV2.png)
 
 <br>
 <br>
@@ -134,7 +134,7 @@ Dentro de lo que es el tiempo de juego, el escenario y la música se mantienen m
 De manera externa, el nivel individual de cada jugador, y su oro, depende de la puntuación de cada partida. Conforme se avanza de nivel podemos acceder a camuflajes y trampas más avanzados.
 
 
-![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/tree/master/src/main/resources/static/PLevel.png)
+![Level Example](https://github.com/TheThirdLaw/JuegosEnRed/blob/master/src/main/resources/static/PLevel.png)
 
 <br>
 
