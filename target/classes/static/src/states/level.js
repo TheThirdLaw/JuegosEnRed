@@ -156,15 +156,13 @@ NoName.levelState.prototype = {
     update: function() {
         //Cambia el texto dependiendo de si está por delante o por detrás
         if(game.player.x < game.rival.x){
-            job.setText('¡Persíguelo!');
-            cont = 1;
+        	text = game.add.sprite(20, 20, 'catch');
+        	text.scale.setTo(0.35, 0.35);
+        	text.fixedToCamera = true;
         }else if(game.rival.x < game.player.x){
-            job.setText('¡Huye!');
-            if(cont == 1){
-            	xspeed = 7;
-            	cont = 2;
-            	sptimer = game.time.events.add(Phaser.Timer.SECOND * 3, speedy, this);
-            }
+        	text = game.add.sprite(20, 20, 'run');
+        	text.scale.setTo(0.35, 0.35);
+        	text.fixedToCamera = true;
         }
         
         //Se determina como varía el tamaño en función a la y

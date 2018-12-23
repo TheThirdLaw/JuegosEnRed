@@ -19,6 +19,9 @@ NoName.tieState.prototype = {
 
     create: function(){
         game.world.setBounds(0, 0, 800, 600);
+        game.add.tileSprite(0, 0, 800, 600, 'background');
+        game.add.tileSprite(0, 0, 800, 600, 'hojas1');
+        game.add.tileSprite(0, 0, 800, 600, 'hojas2');
 
         //Si se llega al final del nivel sin que nadie pille a nadie, sale un texto por pantalla que indica que ha habido un empate
         tie = game.add.text(game.world.centerX-300, game.world.centerY-200, "Ha habido un empate", {

@@ -10,6 +10,8 @@ NoName.preloadState.prototype = {
         game.load.image('background', 'assets/menu/rsz_backgroundtileable.png');
         game.load.image('lvlbackground', 'assets/images/rsz_lv_back.png');
         game.load.image('lvlground', 'assets/images/rsz_lv_ground.png');
+        game.load.image('hojas1', 'assets/animate/rsz_ahojasatras1.png');
+        game.load.image('hojas2', 'assets/animate/rsz_ahojasdelante1.png');
         game.load.image('loading', 'assets/images/rsz_loading.png');
         game.load.image('match', 'assets/images/rsz_esperandojugador.png');
         game.load.spritesheet('settings', 'assets/botones 2.0/rsz_bconf.png', 143, 98);
@@ -20,6 +22,8 @@ NoName.preloadState.prototype = {
         game.load.image('settingsscreen', 'assets/images/rsz_bniinterfaceajustes.png');
         game.load.image('shopscreen', 'assets/images/rsz_bniinterfaceshop.png');
         game.load.image('creditos', 'assets/images/rsz_creditos.png');
+        game.load.image('catch', 'assets/images/rsz_catch.png');
+        game.load.image('run', 'assets/images/rsz_run.png');
         game.load.spritesheet('credsbutton', 'assets/botones 2.0/rsz_bcreditos.png', 290, 177);
 
         game.load.spritesheet('playpregame', 'assets/botones 2.0/rsz_bplaypregame.png', 160, 96);
