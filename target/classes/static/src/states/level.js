@@ -283,13 +283,8 @@ function bombpow(){
     
 //Se usa el poder del teletransporte
 function jumppow(){
-<<<<<<< HEAD
     game.salto.pendingDestroy = true;
     game.player.x = game.rival.x + 100;
-=======
-    salto.pendingDestroy = true;
-    game.player.x = game.player.x + 150;
->>>>>>> Dev
 }
     
 //Se destruye la trampa

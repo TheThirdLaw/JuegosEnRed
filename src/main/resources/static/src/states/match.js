@@ -32,19 +32,16 @@ NoName.matchState.prototype = {
     },
 
     create: function () {
-<<<<<<< HEAD
     	var msg = {type: "createPlayer"};
     	game.connection.send(JSON.stringify(msg));
     	
     	var msg = {type: "getWorld"};
     	game.connection.send(JSON.stringify(msg));
-=======
         game.add.tileSprite(0, 0, 800, 600, 'background');
         game.add.tileSprite(0, 0, 800, 600, 'match');
         game.add.tileSprite(0, 0, 800, 600, 'hojas1');
         game.add.tileSprite(0, 0, 800, 600, 'hojas2');
     	this.createPlayer();
->>>>>>> Dev
     },
 
     update: function () {
@@ -52,16 +49,16 @@ NoName.matchState.prototype = {
 		game.connection.send(JSON.stringify(msg));
     }, 
     
-    /*getNumPlayers: function (callback) {
+    getNumPlayers: function (callback) {
         $.ajax({
             url: (window.location.href + '/game'),
             async: false,
         }).done(function (data) {
             callback(data);
         })
-    },*/
+    },
     
-    /*createPlayer: function () {
+    createPlayer: function () {
         $.ajax({
             method: "POST",
             url: (window.location.href + '/game'),
@@ -73,5 +70,5 @@ NoName.matchState.prototype = {
             console.log("Player created: " + JSON.stringify(data));
             game.player1 = data
         })
-    }*/
+    }
 }
