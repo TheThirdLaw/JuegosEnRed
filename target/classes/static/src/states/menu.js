@@ -14,6 +14,7 @@ NoName.menuState.prototype = {
         game.add.button(100, 200, 'play', playButton, this, 1, 0, 2);
         game.add.button(101, 370, 'settings', settingsButton, this, 1, 0, 2);
         game.add.button(245, 370, 'shop', shopButton, this, 1, 0, 2);
+        game.add.button(400, 450, 'credsbutton', credsButton, this, 1, 0, 2);
     },
 
     update: function() {
@@ -31,4 +32,8 @@ function shopButton() {
 
 function settingsButton() {
     game.state.start('configState');    
+}
+
+function credsButton() {
+    game.state.start('creditosState');    
 }

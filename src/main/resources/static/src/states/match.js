@@ -25,6 +25,7 @@ NoName.matchState.prototype = {
 
     //Se crea al jugador
     create: function () {
+        game.add.tileSprite(0, 0, 800, 600, 'background');
         game.add.tileSprite(0, 0, 800, 600, 'match');
     	this.createPlayer();
     },

@@ -1,4 +1,4 @@
-NoName.configState = function(game){
+NoName.creditosState = function(game){
 
 }
 
@@ -12,7 +12,7 @@ NoName.configState.prototype = {
 
     create: function(){
         game.world.setBounds(0, 0, 800, 600);
-        game.add.tileSprite(0, 0, 800, 600, 'settingsscreen');
+        game.add.tileSprite(0, 0, 800, 600, 'creditos');
 
         //Menu button
         game.add.button(game.world.centerX-150, game.world.centerY+50, 'menu', backtomenu, this, 1, 0, 2);

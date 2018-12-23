@@ -10,11 +10,17 @@ NoName.preloadState.prototype = {
         game.load.image('background', 'assets/menu/rsz_backgroundtileable.png');
         game.load.image('lvlbackground', 'assets/images/rsz_lv_back.png');
         game.load.image('lvlground', 'assets/images/rsz_lv_ground.png');
+        game.load.image('loading', 'assets/images/rsz_loading.png');
+        game.load.image('match', 'assets/images/rsz_esperandojugador.png');
         game.load.spritesheet('settings', 'assets/botones 2.0/rsz_bconf.png', 143, 98);
         game.load.spritesheet('play', 'assets/botones 2.0/rsz_bplay.png', 249, 149);
         game.load.spritesheet('shop', 'assets/botones 2.0/rsz_bshop.png', 143, 99);
         game.load.image('title', 'assets/menu/rsz_Title.png');
         game.load.image('blackscreen', 'assets/images/blackscreen.png');
+        game.load.image('settings', 'assets/images/rsz_bniinterfaceajustes.png');
+        game.load.image('shop', 'assets/images/rsz_bniinterfaceshop.png');
+        game.load.image('creditos', 'assets/images/rsz_creditos.png');
+        game.load.image('credsbutton', 'assets/images/rsz_bcreditos.png');
 
         game.load.spritesheet('playpregame', 'assets/botones 2.0/rsz_bplaypregame.png', 160, 96);
         game.load.image('bomb', 'assets/botones 2.0/rsz_bbomba.png');
@@ -66,7 +72,7 @@ NoName.preloadState.prototype = {
     },
 
     create: function() {
-        game.add.tileSprite(0, 0, 800, 600, 'background');
+        game.add.tileSprite(0, 0, 800, 600, 'loading');
         game.state.start('menuState');
     },
 
