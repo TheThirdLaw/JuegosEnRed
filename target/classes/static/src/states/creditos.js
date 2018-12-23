@@ -15,7 +15,7 @@ NoName.configState.prototype = {
         game.add.tileSprite(0, 0, 800, 600, 'creditos');
 
         //Menu button
-        game.add.button(game.world.centerX-150, game.world.centerY+50, 'menu', backtomenu, this, 1, 0, 2);
+        game.add.button(500, 400, 'menu', backtomenu, this, 1, 0, 2);
     },
 
     update: function(){

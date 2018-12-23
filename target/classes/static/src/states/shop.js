@@ -12,7 +12,7 @@ NoName.shopState.prototype = {
 
     create: function(){
         game.world.setBounds(0, 0, 800, 600);
-        game.add.tileSprite(0, 0, 800, 600, 'shop');
+        game.add.tileSprite(0, 0, 800, 600, 'shopscreen');
 
         //Menu button
         game.add.button(game.world.centerX-150, game.world.centerY+50, 'menu', backtomenu, this, 1, 0, 2);

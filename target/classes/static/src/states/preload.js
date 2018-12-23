@@ -17,10 +17,10 @@ NoName.preloadState.prototype = {
         game.load.spritesheet('shop', 'assets/botones 2.0/rsz_bshop.png', 143, 99);
         game.load.image('title', 'assets/menu/rsz_Title.png');
         game.load.image('blackscreen', 'assets/images/blackscreen.png');
-        game.load.image('settings', 'assets/images/rsz_bniinterfaceajustes.png');
-        game.load.image('shop', 'assets/images/rsz_bniinterfaceshop.png');
+        game.load.image('settingsscreen', 'assets/images/rsz_bniinterfaceajustes.png');
+        game.load.image('shopscreen', 'assets/images/rsz_bniinterfaceshop.png');
         game.load.image('creditos', 'assets/images/rsz_creditos.png');
-        game.load.image('credsbutton', 'assets/images/rsz_bcreditos.png');
+        game.load.spritesheet('credsbutton', 'assets/botones 2.0/rsz_bcreditos.png', 270, 177);
 
         game.load.spritesheet('playpregame', 'assets/botones 2.0/rsz_bplaypregame.png', 160, 96);
         game.load.image('bomb', 'assets/botones 2.0/rsz_bbomba.png');
@@ -30,6 +30,7 @@ NoName.preloadState.prototype = {
         game.load.image('morderbloq', 'assets/botones 2.0/rsz_bmorderbloq.png');
         game.load.image('interfacecartas', 'assets/botones 2.0/rsz_bniinterfacecartas.png');
         game.load.image('salto', 'assets/botones 2.0/rsz_bsalto.png');
+        game.load.image('powers', 'assets/botones 2.0/rsz_bnicartas.png');
         game.load.spritesheet('menu', 'assets/botones 2.0/rsz_bmenu.png', 249, 149);        
 
         game.load.image('example_char', 'assets/personajes 2.0/P1aA.png');
