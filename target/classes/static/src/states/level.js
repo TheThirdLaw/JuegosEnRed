@@ -165,11 +165,17 @@ NoName.levelState.prototype = {
         	text = game.add.sprite(20, 20, 'catch');
         	text.scale.setTo(0.35, 0.35);
         	text.fixedToCamera = true;
+            cont = 1;
         }else if(game.rival.x < game.player.x){
         	text.destroy();
         	text = game.add.sprite(20, 20, 'run');
         	text.scale.setTo(0.36, 0.36);
         	text.fixedToCamera = true;
+            if(cont == 1){
+                xspeed = 7;
+                cont = 2;
+                sptimer = game.time.events.add(Phaser.Timer.SECOND * 3, speedy, this);
+            }
         }
         
         //Se determina como varía el tamaño en función a la y
