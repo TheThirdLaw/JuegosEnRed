@@ -19,6 +19,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class WebsocketGameHandler extends TextWebSocketHandler {
@@ -77,6 +78,36 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 				case "getWorld":
 					wnode.put("type", "getWorld");
 					wnode.set("map", mapper.valueToTree(mapa));
+					msg = wnode.toString();
+					session.sendMessage(new TextMessage(msg));
+					break;
+					
+				case "putPlayer":
+					rnode = rnode.get("jugador");
+					Player update = new Player();
+					update.setId(rnode.get("id").asLong());
+					update.setX(rnode.get("x").asInt());
+					update.setY(rnode.get("y").asInt());
+					update.setTrap(rnode.get("trap").asBoolean());
+					updatePlayer(update);
+					break;
+					
+				case "getPlayer":
+					long id;
+					if (rnode.get("id").asLong() == 1) {
+						id = 2;
+					} else {
+						id = 1;
+					}
+					Player gp = players.get(id);
+					wnode = mapper.createObjectNode();
+					jnode = mapper.createObjectNode();
+					wnode.put("type", "getPlayer");
+					jnode.put("id", gp.getId());
+					jnode.put("x", gp.getX());
+					jnode.put("y", gp.getY());
+					jnode.put("trap", gp.getTrap());
+					wnode.set("jugador", jnode);
 					msg = wnode.toString();
 					session.sendMessage(new TextMessage(msg));
 					break;
@@ -143,4 +174,11 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 	/*public ResponseEntity<List<Obstacle>> getWorld() {
 		return new ResponseEntity<>(mapa, HttpStatus.OK);
 	}*/
+	
+	public void updatePlayer(Player player) {
+		Player savedPlayer = players.get(player.getId());
+		if (savedPlayer != null) {
+			players.put(player.getId(), player);
+		}
+	}
 }

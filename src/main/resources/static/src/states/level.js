@@ -47,18 +47,18 @@ NoName.levelState.prototype = {
     init: function() {
     	game.connection.onmessage = function(msg) {
 			data = JSON.parse(msg.data);
-			/*if (data.type == "getWorld") {
-				game.map = data.map;
-			}*/
-    	}
-    	
-    	//getWorld();
+			if (data.type == "getPlayer") {
+				game.player2 = data.jugador;
+			}
+		}
 			
 		if (game.player1.id == 1) {
 			game.player2 = {id: 2}
 		} else {
 			game.player2 = {id: 1}
         }	
+		
+		getPlayer();
 	},
         
     preload: function() {
@@ -100,18 +100,18 @@ NoName.levelState.prototype = {
     
         //Se lee el array que pasa el servidor y se generan sprites
         for (var i = 0; i < game.map.length; i++){
-            console.log("1");
+            //console.log("1");
             var data;
             if (game.map[i].isRock == true){
                 data = selectRock(game.map[i].sprite);
                 var rock = game.add.sprite(game.map[i].x, game.map[i].y, data[0]);
                 rock.scale.setTo(data[1] + (0.15*(game.map[i].y-320)/555), data[1] + (0.15*(game.map[i].y-320)/555));
-                console.log("2");
+                //console.log("2");
             }else{
                 data = selectHerb(game.map[i].sprite);
                 var herb = game.add.sprite(game.map[i].x, game.map[i].y, data);
                 herb.scale.setTo(1/3 + (0.15*(game.map[i].y-320)/555), 1/3 + (0.15*(game.map[i].y-320)/555));
-                console.log("2");
+                //console.log("2");
             }
         }
     
@@ -128,17 +128,17 @@ NoName.levelState.prototype = {
         sptimer = game.time.events.add(Phaser.Timer.SECOND * 5, speedy, this);
     
         //Si se ha seleccionado los power-ups y trampas anteriormente, aparecerán los iconos por pantalla
-        if(hasbomb){
+        if(game.hasbomb == true){
             bomba = game.add.sprite(540, 20, 'bomb');
             bomba.scale.setTo(0.535, 0.535);
             bomba.fixedToCamera = true;
         }
-        if(hasjump){
+        if(game.hasjump == true){
             salto = game.add.sprite(700, 20, 'salto');
             salto.scale.setTo(0.535, 0.535);
             salto.fixedToCamera = true;
         }
-        if(haslight){
+        if(game.haslight == true){
             luces = game.add.sprite(620, 20, 'lightsout');
             luces.scale.setTo(0.535, 0.535);
             luces.fixedToCamera = true;
@@ -190,9 +190,9 @@ NoName.levelState.prototype = {
 
         //Si se pulsa la O y se ha seleccionado la trampa anteriormente se suelta la trampa de luz
         if(this.oKey.isDown){
-            if(haslight){
+            if(game.haslight == true){
                 droptrap();
-                haslight = false;
+                game.haslight = false;
             }
         }
         //Una vez pasan tres segundos desde la activación de la trampa, se destuye
@@ -202,9 +202,9 @@ NoName.levelState.prototype = {
         
         //Si se pulsa la I y se ha seleccionado la bomba anteriormente, se usa la bomba
         if(this.iKey.isDown){
-            if(hasbomb){
+            if(game.hasbomb == true){
                 bombpow();
-                hasbomb = false;
+                game.hasbomb = false;
             }
         }
         //Una vez pasan tres segundos desde la activación de la bomba, la velocidad vuelve a la normal
@@ -214,7 +214,7 @@ NoName.levelState.prototype = {
 
         //Si se pulsa la P y se ha seleccionado el teletransporte, se usa el poder
         if(this.pKey.isDown){
-            if(hasjump){
+            if(game.hasjump == true){
                 jumppow();
                 hasjump = false;
             }
@@ -228,26 +228,11 @@ NoName.levelState.prototype = {
         }
 
         putPlayer();
-
-        //La x e y del rival son las mismas que las del jugador 2
-        getPlayer(function(data){
-        	game.player2 = JSON.parse(JSON.stringify(data));
-        	game.rival.x = game.player2.x;
-        	game.rival.y = game.player2.y;
-        });
+        getPlayer();
+        game.rival.x = game.player2.x;
+        game.rival.y = game.player2.y;
         
     },
-
-    //Se pide el array del servidor que determina como es el mundo
-    /*getWorld: function (callback) {
-        $.ajax({
-            url: (window.location.href + '/game/world'),
-            async: false,
-        }).done(function (data) {
-            game.map = data;
-            callback(data);
-        })
-    }*/
 }
 
 //Si el jugador y el rival colisionan, se acaba la partida y se pasa a endState
@@ -264,16 +249,6 @@ function  collision() {
 function nowinner(){
     game.state.start('tieState');
 }
-    
-/*//Hide behind rock function
-function makeinvisible(sprite){
-    sprite.visible = false;
-}
-    
-//Get out of behind the rock function
-function makevisible(sprite){
-    sprite.visible = true;
-}*/
     
 //Acaba con el buff de velocidad incial que tiene el rival
 function speedy(){
@@ -382,8 +357,19 @@ function selectRock(i){
     }
 }
 
-//Se actualiza la posición del jugador
 function putPlayer() {
+	game.player1.x = game.player.x;
+	game.player1.y = game.player.y;
+	if(game.player1.trap == true){
+    	game.player1.trap = false;
+    }
+	
+	var msg = {type: "putPlayer", jugador: game.player1};
+	game.connection.send(JSON.stringify(msg));
+}
+
+//Se actualiza la posición del jugador
+/*function putPlayer() {
     game.player1.x = game.player.x;
     game.player1.y = game.player.y;
     $.ajax({
@@ -400,10 +386,15 @@ function putPlayer() {
         	game.player1.trap = false;
         }
     })
+}*/
+
+function getPlayer() {
+	var msg = {type: "getPlayer", id: game.player1.id};
+	game.connection.send(JSON.stringify(msg));
 }
 
 //Se pide la información del jugador 2
-function getPlayer(callback) {
+/*function getPlayer(callback) {
     $.ajax({
         method: "GET",
         url: (window.location.href + '/game/') + game.player2.id,
@@ -415,7 +406,7 @@ function getPlayer(callback) {
         game.player2 = JSON.parse(JSON.stringify(data));
         callback(data);
     })
-}
+}*/
 
 //Se pide la información de los jugadores de manera síncrona porque si no puede dar errores siendo undefined
 /*function getPlayerSync(callback) {
@@ -431,9 +422,4 @@ function getPlayer(callback) {
         game.player2 = JSON.parse(JSON.stringify(data));
         callback(data);
     })
-}*/
-
-/*function getWorld() {
-	var msg = {type: "getWorld"};
-	game.connection.send(JSON.stringify(msg));
 }*/
