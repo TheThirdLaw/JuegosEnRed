@@ -1,8 +1,8 @@
-NoName.configState = function(game){
+NoName.creditosState = function(game){
 
 }
 
-NoName.configState.prototype = {
+NoName.creditosState.prototype = {
 
     preload: function(){
         
@@ -10,7 +10,7 @@ NoName.configState.prototype = {
 
     create: function(){
         game.world.setBounds(0, 0, 800, 600);
-        game.add.tileSprite(0, 0, 800, 600, 'settingsscreen');
+        game.add.tileSprite(0, 0, 800, 600, 'creditos');
 
         //Menu button
         menuB = game.add.button(625, 475, 'menu', backtomenu, this, 1, 0, 2);

@@ -2,8 +2,6 @@ NoName.configState = function(game){
 
 }
 
-var info;
-
 NoName.configState.prototype = {
 
     preload: function(){
@@ -12,15 +10,11 @@ NoName.configState.prototype = {
 
     create: function(){
         game.world.setBounds(0, 0, 800, 600);
-
-        info = game.add.text(game.world.centerX-230, game.world.centerY-200, "Aquí va la configuración", {
-            font: "50px Arial",
-            fill: "#ff0044",
-            align: "center"
-        });
+        game.add.tileSprite(0, 0, 800, 600, 'settingsscreen');
 
         //Menu button
-        game.add.button(game.world.centerX-150, game.world.centerY+50, 'menu', backtomenu, this, 1, 0, 2);
+        menuB = game.add.button(625, 475, 'menu', backtomenu, this, 1, 0, 2);
+        menuB.scale.setTo(0.5, 0.5);
     },
 
     update: function(){

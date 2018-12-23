@@ -17,6 +17,9 @@ NoName.endState.prototype = {
 
     create: function(){
         game.world.setBounds(0, 0, 800, 600);
+        game.add.tileSprite(0, 0, 800, 600, 'background');
+        game.add.tileSprite(0, 0, 800, 600, 'hojas1');
+        game.add.tileSprite(0, 0, 800, 600, 'hojas2');
 
         //Si la posición del jugador es mayor, sale por pantalla un texto que indica que ha ganado
         if(ganar == true){

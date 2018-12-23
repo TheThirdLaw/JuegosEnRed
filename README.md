@@ -42,7 +42,7 @@ Público: todos los públicos
 ![Start Menu](https://github.com/TheThirdLaw/JuegosEnRed/blob/Dev/assets/images/PInicio.PNG)
 
 
-El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para despistar a su rival, y colocarse tras él, donde los papeles se invierten y el perseguidor pasa a ser perseguido. El juego cuenta con un sistema de trampas para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel.
+El juego consiste en un mix entre el pilla-pilla y el escondite para dos jugadores, con una temática geométrica pero abstracta. El objetivo es que el jugador que va en primera posición consiga esconderse para despistar a su rival, y colocarse tras él, donde los papeles se invierten y el perseguidor pasa a ser perseguido. El juego cuenta con un sistema de trampas para distraer al segundo jugador. Cuando acaba la partida, los puntos obtenidos se sumarán al cómputo general de puntuación de cada jugador, con los que irá aumentando de nivel. 
 
 <br>
 
@@ -52,11 +52,13 @@ Desarrollo del GDD, creación del juego, Fase 1 - INICIO: 19/09/2018; FIN: 26/09
 
 Creación del juego, versión alpha offline, Fase 2 - INICIO: 26/09/2018; FIN: 28/10/2018
 
+Creación del servidor, versión beta online, Fase 3 - INICIO: 28/10/2018; FIN: 02/12/2018
+
 <br>
 
 ## **VISIÓN GENERAL DEL JUEGO**
 
-Este proyecto está enfocado hacia un producto sencillo, pero entretenido, en el cual la competitividad entre dos jugadores aleatorios no se basará simplemente en huir, sino que también se necesitará estrategia para esconderse de tal forma que el compañero no consiga percibirle para, por ejemplo, conseguir alcanzarlo en el momento justo en el que lo adelante.
+Este proyecto está enfocado hacia un producto sencillo, pero entretenido, en el cual la competitividad entre dos jugadores aleatorios no se basará simplemente en huir, sino que también se necesitará estrategia para esconderse de tal forma que el compañero no consiga percibirle para, por ejemplo, conseguir alcanzarlo en el momento justo en el que lo adelante, y además con la ventaja (o desventaja) de poder utilizar trampas o power-ups.
 
 <br>
 
@@ -69,7 +71,7 @@ Al ser un juego de plataformas los controles son sencillos, flechas hacia la der
 Tras determinar quién inicia como perseguidor, y quién como perseguido, se inicia el juego. El perseguido tiene X segundos en los que es más rápido que su rival para poner trampas, esconderse, etc. Cuando esos X segundos terminan, el perseguidor puede empezar a usar power-ups y empieza a ser más rápido que el perseguido, por lo que este último debe esconderse o será cazado sin remedio, y el perseguidor ganará. En el momento en el que el perseguidor se pasa de largo, se invierten posiciones (aparece en plantalla un mensaje de "HUYE" o "CAZA"). Si se acaba el escenario, hay un empate y se puede (o no) volver a jugar.
 
 ### Cámara: 
-Utilizamos una perspectiva 2D lateral, y la cámara avanzará conforme avance (o retroceda) el jugador.
+Utilizamos una perspectiva 2D lateral, y la cámara avanzará conforme avance el jugador.
 
 ### Controles: 
 Como ya mencionamos antes, los controles principales se basan en las flechas:<br><br>

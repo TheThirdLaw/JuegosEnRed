@@ -28,17 +28,23 @@ NoName.matchState.prototype = {
 		
 
     preload: function () {
-        var text = "- MatchMaking -\n Esperando otro jugador \n para iniciar partida.";
-        var style = { font: "45px Arial", fill: "#0040FF", align: "center" };
-        var t = game.add.text(game.world.centerX - 200, 0, text, style);
+
     },
 
     create: function () {
+<<<<<<< HEAD
     	var msg = {type: "createPlayer"};
     	game.connection.send(JSON.stringify(msg));
     	
     	var msg = {type: "getWorld"};
     	game.connection.send(JSON.stringify(msg));
+=======
+        game.add.tileSprite(0, 0, 800, 600, 'background');
+        game.add.tileSprite(0, 0, 800, 600, 'match');
+        game.add.tileSprite(0, 0, 800, 600, 'hojas1');
+        game.add.tileSprite(0, 0, 800, 600, 'hojas2');
+    	this.createPlayer();
+>>>>>>> Dev
     },
 
     update: function () {
