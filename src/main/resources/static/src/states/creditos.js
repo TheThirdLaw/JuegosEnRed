@@ -2,8 +2,6 @@ NoName.creditosState = function(game){
 
 }
 
-var info;
-
 NoName.creditosState.prototype = {
 
     preload: function(){

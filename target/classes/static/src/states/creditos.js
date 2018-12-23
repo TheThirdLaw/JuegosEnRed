@@ -4,7 +4,7 @@ NoName.creditosState = function(game){
 
 var info;
 
-NoName.configState.prototype = {
+NoName.creditosState.prototype = {
 
     preload: function(){
         
@@ -15,7 +15,8 @@ NoName.configState.prototype = {
         game.add.tileSprite(0, 0, 800, 600, 'creditos');
 
         //Menu button
-        game.add.button(500, 400, 'menu', backtomenu, this, 1, 0, 2);
+        menuB = game.add.button(625, 475, 'menu', backtomenu, this, 1, 0, 2);
+        menuB.scale.setTo(0.5, 0.5);
     },
 
     update: function(){

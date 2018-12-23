@@ -136,10 +136,6 @@ NoName.levelState.prototype = {
         
     
         //Si se ha seleccionado los power-ups y trampas anteriormente, aparecerán los iconos por pantalla
-        bomba = game.add.sprite(520, 20, 'powers');
-        bomba.scale.setTo(0.535, 0.535);
-        bomba.fixedToCamera = true;
-
         if(hasbomb){
             bomba = game.add.sprite(540, 20, 'bomb');
             bomba.scale.setTo(0.535, 0.535);
