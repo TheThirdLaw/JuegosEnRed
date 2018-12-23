@@ -94,7 +94,7 @@ Estas recompensas dependen del nivel del rival (también pueden ser penalizacion
 
 -Carga: Carga todos los assets.
 <br>
-![Cargando](https://github.com/TheThirdLaw/JuegosEnRed/blob/master/src/main/resources/static/images/Loading.png)
+![Cargando](https://github.com/TheThirdLaw/JuegosEnRed/blob/master/src/main/resources/static/assets/images/Loading.png)
 <br>
 <br>
 -Menú principal: con opciones de iniciar partida, acceder a la tienda, a los créditos y a la configuración.
