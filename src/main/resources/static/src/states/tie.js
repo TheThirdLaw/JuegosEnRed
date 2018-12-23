@@ -5,12 +5,9 @@ NoName.tieState = function(game){
 var tie;
 
 NoName.tieState.prototype = {
-
-	//Se elimina a los jugadores
+		
 	init: function() {
-		if(game.player.x > game.rival.x){
-			deletePlayers()
-		}
+		
 	},
 
     preload: function(){
@@ -29,6 +26,10 @@ NoName.tieState.prototype = {
         
         //Botón que devuelve al menú
         game.add.button(game.world.centerX-150, game.world.centerY+50, 'menu', backtomenu, this, 1, 0, 2);
+        
+        if(game.player.x < game.rival.x){
+			deletePlayers();
+		}
     },
 
     update: function(){
@@ -41,14 +42,6 @@ NoName.tieState.prototype = {
     }
 
 	function deletePlayers() {
-		$.ajax({
-	        method: "DELETE",
-	        url: (window.location.href + '/game/delete'),
-	        processData: false,
-	        headers: {
-	            "Content-Type": "application/json"
-	        },
-	    }).done(function (data) {
-	        console.log("Player removed: " + JSON.stringify(data));
-	    })
+		var msg = {type: "deletePlayers"};
+		game.connection.send(JSON.stringify(msg));
 	}

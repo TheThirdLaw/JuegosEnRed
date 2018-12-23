@@ -134,9 +134,9 @@ NoName.levelState.prototype = {
             bomba.fixedToCamera = true;
         }
         if(game.hasjump == true){
-            salto = game.add.sprite(700, 20, 'salto');
-            salto.scale.setTo(0.535, 0.535);
-            salto.fixedToCamera = true;
+            game.salto = game.add.sprite(700, 20, 'salto');
+            game.salto.scale.setTo(0.535, 0.535);
+            game.salto.fixedToCamera = true;
         }
         if(game.haslight == true){
             luces = game.add.sprite(620, 20, 'lightsout');
@@ -264,7 +264,7 @@ function bombpow(){
     
 //Se usa el poder del teletransporte
 function jumppow(){
-    salto.pendingDestroy = true;
+    game.salto.pendingDestroy = true;
     game.player.x = game.rival.x + 100;
 }
     

@@ -113,6 +113,11 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 					session.sendMessage(new TextMessage(msg));
 					break;
 					
+				case "deletePlayers":
+					players.clear();
+					nextId = new AtomicLong(0);
+					break;
+					
 				default:
 					break;
 			}

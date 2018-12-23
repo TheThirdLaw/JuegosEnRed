@@ -6,12 +6,8 @@ var info;
 
 NoName.endState.prototype = {
 	
-	//El jugador que pierde (el que sale el último de la partida) elimina a los jugadores para que se pueda jugar
-	//otra partida sin reininciar el servidor
 	init: function() {
-		if(ganar == false){
-			deletePlayers();
-		}
+		
 	},
 		
 
@@ -32,6 +28,7 @@ NoName.endState.prototype = {
         }
         //Si la posición del rival es mayor, sale por pantalla un texto que indica que ha perdido el jugador
         else if(ganar == false){
+        	deletePlayers();
             info = game.add.text(game.world.centerX-230, game.world.centerY-200, "Has perdido...", {
                 font: "65px Arial",
                 fill: "#ff0044",
@@ -53,14 +50,6 @@ function backtomenu(){
 }
 
 function deletePlayers() {
-	$.ajax({
-        method: "DELETE",
-        url: (window.location.href + '/game/delete'),
-        processData: false,
-        headers: {
-            "Content-Type": "application/json"
-        },
-    }).done(function (data) {
-        console.log("Player removed: " + JSON.stringify(data));
-    })
+	var msg = {type: "deletePlayers"};
+	game.connection.send(JSON.stringify(msg));
 }
