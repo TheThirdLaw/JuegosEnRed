@@ -20,6 +20,8 @@ NoName.pregameState.prototype = {
 
     create: function(){
         game.add.tileSprite(0, 0, 800, 600, 'background');
+        game.add.tileSprite(0, 0, 800, 600, 'hojas1');
+        game.add.tileSprite(0, 0, 800, 600, 'hojas2');
         game.add.tileSprite(13, 20, 774, 460, 'interfacecartas');
         game.add.button(710, 165, 'flechad', flechaD, this);
         game.add.button(45, 165, 'flechai', flechaI, this);

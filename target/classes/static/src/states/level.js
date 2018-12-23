@@ -19,7 +19,7 @@ var sizeR = 0.06;
 var ganar;
 
 //Declaración del texto que indica si huyes o persigues
-var job;
+var text;
 
 //Timer para el buff de velocidad del rival
 var sptimer;
@@ -151,17 +151,21 @@ NoName.levelState.prototype = {
             luces.scale.setTo(0.535, 0.535);
             luces.fixedToCamera = true;
         }
+        
+        text = game.add.sprite(20, 20, 'catch');
     },
     
     update: function() {
         //Cambia el texto dependiendo de si está por delante o por detrás
         if(game.player.x < game.rival.x){
+        	text.destroy();
         	text = game.add.sprite(20, 20, 'catch');
         	text.scale.setTo(0.35, 0.35);
         	text.fixedToCamera = true;
         }else if(game.rival.x < game.player.x){
+        	text.destroy();
         	text = game.add.sprite(20, 20, 'run');
-        	text.scale.setTo(0.35, 0.35);
+        	text.scale.setTo(0.36, 0.36);
         	text.fixedToCamera = true;
         }
         
