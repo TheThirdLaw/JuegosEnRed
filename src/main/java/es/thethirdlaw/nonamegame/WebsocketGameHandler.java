@@ -70,6 +70,7 @@ public class WebsocketGameHandler extends TextWebSocketHandler {
 					jnode.put("x", p.getX());
 					jnode.put("y", p.getY());
 					jnode.put("place", p.getPlace());
+					jnode.put("trap", p.getTrap());
 					wnode.set("jugador", jnode);
 					msg = wnode.toString();
 					session.sendMessage(new TextMessage(msg));

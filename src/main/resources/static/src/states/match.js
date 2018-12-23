@@ -18,11 +18,6 @@ NoName.matchState.prototype = {
 			
 			if (data.type == "createPlayer") {
 				game.player1 = data.jugador;
-				if(game.haslight == true){
-					game.player1.trap = true;
-				}else{
-					game.player1.trap = false;
-				}
 			}
 			
 			if (data.type == "getWorld") {

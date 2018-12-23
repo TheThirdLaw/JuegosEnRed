@@ -5,7 +5,7 @@ public class Player {
 	private long id;
 	private int x, y;
 	private int place;
-	private boolean trap;
+	private boolean trap = false;
 	
 	Player() {}
 

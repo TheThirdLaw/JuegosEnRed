@@ -180,8 +180,8 @@ NoName.levelState.prototype = {
     
         //Colisiones
         game.physics.arcade.collide(game.player, game.rival, collision);
-        game.physics.arcade.collide(trap, game.rival, lighttrap);
-        game.physics.arcade.collide(trap2, game.player, lighttrap2);
+        game.physics.arcade.collide(game.trap, game.rival, lighttrap);
+        game.physics.arcade.collide(game.trap2, game.player, lighttrap2);
     
         //Si el jugador o el rival llegan al final del mapa, hay un empate
         if(game.player.x >= 16000 || game.rival.x >= 16000){
@@ -221,10 +221,10 @@ NoName.levelState.prototype = {
         }
         
         //Si el rival ha soltado la trampa y esta aún no se ha creado, se crea el la misma x e y que el rival
-        if(game.player2.trap == true && trap2 == null){
-        	trap2 = game.add.sprite(game.rival.x, game.rival.y, 'trap');
-            trap2.scale.setTo(sizeR, sizeR);
-            game.physics.enable(trap2, Phaser.Physics.ARCADE);
+        if(game.player2.trap == true && game.trap2 == null){
+        	game.trap2 = game.add.sprite(game.rival.x, game.rival.y, 'trap');
+            game.trap2.scale.setTo(sizeR, sizeR);
+            game.physics.enable(game.trap2, Phaser.Physics.ARCADE);
         }
 
         putPlayer();
@@ -270,12 +270,12 @@ function jumppow(){
     
 //Se destruye la trampa
 function lighttrap(){
-    trap.destroy();        
+    game.trap.destroy();        
 }
 
 //Si te chocas con la trampa del rival, la pantalla se pone en negro
 function lighttrap2(){
-    trap2.destroy();        
+    game.trap2.destroy();        
     pantallazo = game.add.sprite(0, 0, 'blackscreen');
     lucestime = game.time.now;
 }
@@ -284,9 +284,9 @@ function lighttrap2(){
 function droptrap(){
 	game.player1.trap = true;
     luces.pendingDestroy = true;
-    trap = game.add.sprite(game.player.x, game.player.y, 'trap');
-    trap.scale.setTo(size, size);
-    game.physics.enable(trap, Phaser.Physics.ARCADE);
+    game.trap = game.add.sprite(game.player.x, game.player.y, 'trap');
+    game.trap.scale.setTo(size, size);
+    game.physics.enable(game.trap, Phaser.Physics.ARCADE);
 }
 
 //Selecciona y devuelve una de los sprites de hierbas que hay disponibles
@@ -360,9 +360,6 @@ function selectRock(i){
 function putPlayer() {
 	game.player1.x = game.player.x;
 	game.player1.y = game.player.y;
-	if(game.player1.trap == true){
-    	game.player1.trap = false;
-    }
 	
 	var msg = {type: "putPlayer", jugador: game.player1};
 	game.connection.send(JSON.stringify(msg));
