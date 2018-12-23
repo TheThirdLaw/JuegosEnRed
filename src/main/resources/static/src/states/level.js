@@ -66,6 +66,7 @@ NoName.levelState.prototype = {
         //Background
         game.add.tileSprite(0, 0, 16000, 600, 'background');
         game.add.tileSprite(0, 0, 16000, 600, 'lvlbackground');
+        game.add.tileSprite(0, 0, 16000, 600, 'lvlground');
         game.world.setBounds(0, 0, 16000, 600);
         
         //Dependiendo de si estás delante o detrás, se te asigna un sprite determinado para distinguirte con mayor facilidad

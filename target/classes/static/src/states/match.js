@@ -20,13 +20,12 @@ NoName.matchState.prototype = {
 		
 
     preload: function () {
-        var text = "- MatchMaking -\n Esperando otro jugador \n para iniciar partida.";
-        var style = { font: "45px Arial", fill: "#0040FF", align: "center" };
-        var t = game.add.text(game.world.centerX - 200, 0, text, style);
+
     },
 
     //Se crea al jugador
     create: function () {
+        game.add.tileSprite(0, 0, 800, 600, 'match');
     	this.createPlayer();
     },
 
